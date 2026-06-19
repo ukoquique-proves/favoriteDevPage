@@ -161,6 +161,95 @@
             font-size: 1.1rem;
         }
 
+        .expand-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent-color);
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .expand-link:hover {
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .tradeoff-section {
+            margin-top: 6rem;
+            padding: 2rem 0;
+            border-top: 2px solid var(--secondary-color);
+        }
+
+        .tradeoff-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .tradeoff-intro {
+            background-color: var(--code-bg);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent-color);
+            margin-bottom: 2rem;
+            color: #8b949e;
+            line-height: 1.8;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--code-bg);
+            border: 1px solid var(--secondary-color);
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 2rem 0;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--secondary-color);
+            line-height: 1.5;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background-color: rgba(88, 166, 255, 0.05);
+        }
+
+        .docker-col {
+            color: #ffb347;
+        }
+
+        .puppy-col {
+            color: #79c0ff;
+        }
+
+        .tradeoff-close {
+            background-color: var(--secondary-color);
+            padding: 1.5rem;
+            border-left: 3px solid var(--success);
+            border-radius: 4px;
+            margin-top: 2rem;
+            font-style: italic;
+            color: #8b949e;
+            line-height: 1.8;
+        }
+
         @media (max-width: 600px) {
             .hero h1 {
                 font-size: 1.8rem;
@@ -189,6 +278,7 @@
             <h1>Desarrollo en entornos de 310MB de RAM.</h1>
             <p>Automatización e IA sin el overhead de Docker. Rigor técnico para desarrolladores senior que valoran el rendimiento real.</p>
             <div class="banner">💻 Dedicado a esa laptop secundaria que tienes juntando polvo en el armario porque Docker la hace agonizar.</div>
+            <a href="#tradeoff" class="expand-link">⚖️ Entender el trade-off: Docker vs. Puppy →</a>
         </section>
 
         <section id="benchmark">
@@ -229,6 +319,61 @@ Swap:  0B total, 0B used, 0B free
             <p>Introduce tu email para clonar el script de optimización base. Prometemos no enviarte newsletters semanales escritas por una IA corporativa entusiasta.<br><small>Solo código y métricas crudas.</small></p>
             <!-- Aquí se integraría el formulario de ConvertKit/MailerLite -->
             <a href="#" class="btn">Obtener Regalo Técnico</a>
+        </section>
+
+        <section id="tradeoff" class="tradeoff-section">
+            <h2>⚖️ Docker vs. Save-File Nativo</h2>
+            <p style="color: #8b949e; margin-bottom: 2rem;">Elige tus problemas (y tu consumo de RAM)</p>
+            
+            <div class="tradeoff-intro">
+                <strong>Cualquier solución de ingeniería es un intercambio de problemas.</strong> Docker te promete aislamiento absoluto a cambio de devorarte los recursos. Puppy Linux y su Save-File/Save-Folder nativo te ofrecen rendimiento puro en RAM a cambio de un flujo de trabajo ligeramente diferente.
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Aspecto</th>
+                        <th style="width: 35%;" class="docker-col">Docker (Tradicional)</th>
+                        <th style="width: 35%;" class="puppy-col">Puppy Nativo (TrixieRetro)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Overhead Constante</strong></td>
+                        <td>Demonios y capas de red virtual consumiendo CPU en segundo plano.</td>
+                        <td>Cero overhead base. Save-File congela en RAM cuando no se usa.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Configuración Inicial</strong></td>
+                        <td>Relativamente simple con `docker-compose`.</td>
+                        <td>Requiere escribir tus propios scripts de Bash (`install_deps.sh`).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Latencia I/O</strong></td>
+                        <td>Capas intermedias ralentizan pipelines locales de IA.</td>
+                        <td>Latencia <strong>1.1 seg</strong> sin input lag. Directo al hardware.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Portabilidad</strong></td>
+                        <td>Tu laptop secundaria queda inutilizable. Requiere 2.5GB+ solo en overhead.</td>
+                        <td>Resucita máquinas viejas. Corre en 310MB de RAM base.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Debugging</strong></td>
+                        <td>Logs opacos. A veces falla la API de Docker, no tu código.</td>
+                        <td>Sin abstracciones. Si algo falla, es el kernel o tu script. Transparencia total.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Curva de Aprendizaje</strong></td>
+                        <td>Baja para el caso simple; compleja para orquestación real.</td>
+                        <td>Media. Necesitas entender el ciclo de vida del Save-File y Bash.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tradeoff-close">
+                💡 <strong>En resumen:</strong> Docker soluciona "en mi máquina funciona" a base de fuerza bruta y hardware caro. Puppy Linux TrixieRetro lo soluciona optimizando la arquitectura del entorno para que funcione al límite de la velocidad de la RAM en cualquier máquina, por vieja que sea.
+            </div>
         </section>
     </main>
 
