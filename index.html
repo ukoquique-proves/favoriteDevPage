@@ -134,9 +134,39 @@
             color: #79c0ff;
         }
 
+        .badges {
+            display: flex;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--code-bg);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 3px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.85rem;
+        }
+
+        .banner {
+            background-color: var(--secondary-color);
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent-color);
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
         @media (max-width: 600px) {
             .hero h1 {
                 font-size: 1.8rem;
+            }
+            .badges {
+                flex-direction: column;
             }
         }
     </style>
@@ -151,8 +181,14 @@
 
     <main>
         <section class="hero">
+            <div class="badges">
+                <span class="badge">[ Build: passing ]</span>
+                <span class="badge">[ Bloatware: 0% ]</span>
+                <span class="badge">[ Humo: No detectado ]</span>
+            </div>
             <h1>Desarrollo en entornos de 310MB de RAM.</h1>
             <p>Automatización e IA sin el overhead de Docker. Rigor técnico para desarrolladores senior que valoran el rendimiento real.</p>
+            <div class="banner">💻 Dedicado a esa laptop secundaria que tienes juntando polvo en el armario porque Docker la hace agonizar.</div>
         </section>
 
         <section id="benchmark">
@@ -175,22 +211,22 @@ Swap:  0B total, 0B used, 0B free
             <div class="courses-grid">
                 <article class="course-card">
                     <h3>1. Resurrección de Hardware Secundario</h3>
-                    <p>Optimización extrema para Agentes de IA corriendo en hardware legacy. Convierte esa laptop vieja en un nodo de cómputo eficiente.</p>
+                    <p>Dale un propósito a tu vieja máquina de viaje. No necesitas 16 núcleos para correr agentes autónomos de IA de forma fluida si sabes gestionar tus recursos. Aprende a exprimir cada MB de RAM.</p>
                 </article>
                 <article class="course-card">
                     <h3>2. Entornos Inmutables con Save-Files</h3>
-                    <p>El fin de Docker en local. Gestión de dependencias y persistencia nativa con tiempos de arranque sub-segundo.</p>
+                    <p>Ahorra la CPU que Docker te roba en redes virtuales y demonios redundantes. Aquí aprendes a congelar tus dependencias corriendo 100% en RAM a costo cero. Tu procesador te lo va a agradecer.</p>
                 </article>
                 <article class="course-card">
                     <h3>3. Optimización Pipeline TrixieRetro</h3>
-                    <p>Scripts de producción optimizados para el stack PuppyTeach. Automatización sin dependencias innecesarias.</p>
+                    <p>Scripts de producción optimizados para el stack PuppyTeach. Automatización sin dependencias innecesarias. Código limpio, métricas reales, cero humo.</p>
                 </article>
             </div>
         </section>
 
         <section id="lead-magnet" class="cta">
             <h2>Regalo Técnico: script install_deps.sh</h2>
-            <p>Descarga nuestra guía avanzada de optimización de Save-Files y el script de configuración base para desarrollo en RAM.</p>
+            <p>Introduce tu email para clonar el script de optimización base. Prometemos no enviarte newsletters semanales escritas por una IA corporativa entusiasta.<br><small>Solo código y métricas crudas.</small></p>
             <!-- Aquí se integraría el formulario de ConvertKit/MailerLite -->
             <a href="#" class="btn">Obtener Regalo Técnico</a>
         </section>
