@@ -196,14 +196,19 @@
             line-height: 1.8;
         }
 
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
         .comparison-table {
             width: 100%;
+            min-width: 720px;
             border-collapse: collapse;
             background-color: var(--code-bg);
             border: 1px solid var(--secondary-color);
             border-radius: 6px;
             overflow: hidden;
-            margin: 2rem 0;
             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
             font-size: 0.95rem;
         }
@@ -233,6 +238,34 @@
 
         .docker-col {
             color: #ffb347;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            margin-left: 0.75rem;
+        }
+
+        code {
+            background-color: #111827;
+            color: #79c0ff;
+            padding: 0.15rem 0.35rem;
+            border-radius: 4px;
+            font-family: "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.95em;
+        }
+
+        pre {
+            margin: 0;
+            overflow-x: auto;
+            background-color: #111827;
+            border: 1px solid var(--secondary-color);
+            border-radius: 6px;
+            padding: 1rem;
+            color: var(--text-color);
+            font-family: "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
         }
 
         .puppy-col {
@@ -329,14 +362,15 @@ Swap:  0B total, 0B used, 0B free
                 <strong>Cualquier solución de ingeniería es un intercambio de problemas.</strong> Docker te promete aislamiento absoluto a cambio de devorarte los recursos. Puppy Linux y su Save-File/Save-Folder nativo te ofrecen rendimiento puro en RAM a cambio de un flujo de trabajo ligeramente diferente.
             </div>
 
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th style="width: 30%;">Aspecto</th>
-                        <th style="width: 35%;" class="docker-col">Docker (Tradicional)</th>
-                        <th style="width: 35%;" class="puppy-col">Puppy Nativo (TrixieRetro)</th>
-                    </tr>
-                </thead>
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">Aspecto</th>
+                            <th style="width: 35%;" class="docker-col">Docker (Tradicional)</th>
+                            <th style="width: 35%;" class="puppy-col">Puppy Nativo (TrixieRetro)</th>
+                        </tr>
+                    </thead>
                 <tbody>
                     <tr>
                         <td><strong>Overhead Constante</strong></td>
@@ -370,9 +404,15 @@ Swap:  0B total, 0B used, 0B free
                     </tr>
                 </tbody>
             </table>
+            </div>
 
             <div class="tradeoff-close">
                 💡 <strong>En resumen:</strong> Docker soluciona "en mi máquina funciona" a base de fuerza bruta y hardware caro. Puppy Linux TrixieRetro lo soluciona optimizando la arquitectura del entorno para que funcione al límite de la velocidad de la RAM en cualquier máquina, por vieja que sea.
+            </div>
+
+            <div class="tradeoff-cta">
+                <a href="#lead-magnet" class="btn">Clonar entorno base (Gratis)</a>
+                <a href="#cursos" class="btn btn-secondary">Ver programa del Curso 2</a>
             </div>
         </section>
     </main>
