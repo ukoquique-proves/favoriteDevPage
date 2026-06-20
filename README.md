@@ -20,7 +20,7 @@ El proyecto se basa en un único archivo [index.html](index.html) que incluye:
   1. Resurrección de Hardware Secundario para Agentes de IA.
   2. Entornos Inmutables con Save-Files (Nativo).
   3. Optimización Pipeline TrixieRetro.
-- **Lead Magnet**: Sección para descarga de `install_deps.sh`.
+- **Lead Magnet**: Sección para descarga de `Code Compacter CLI & Desktop`.
 
 ## 📦 Despliegue en GitHub Pages
 
