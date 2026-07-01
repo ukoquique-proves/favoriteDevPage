@@ -29,10 +29,46 @@
         }
 
         header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 2rem 1rem;
             max-width: 900px;
             margin: 0 auto;
             border-bottom: 1px solid var(--secondary-color);
+        }
+
+        .header-links {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9rem;
+        }
+
+        .header-link {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+        }
+
+        .header-link:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .header-link-accent {
+            color: var(--accent-color);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         h1, h2, h3 {
@@ -106,6 +142,130 @@
             text-align: center;
         }
 
+        .lead-magnet {
+            background: #111827;
+            border: 1px solid #ffaa0044;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        .lead-magnet-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: #ffaa00;
+            color: #000;
+            padding: 0.2rem 0.6rem;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-weight: bold;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .lead-magnet-title {
+            color: #fff;
+            margin-top: 1rem;
+        }
+
+        .lead-magnet-copy {
+            color: #9ca3af;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            color: #e5e7eb;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9rem;
+        }
+
+        .feature-accent {
+            color: #ffaa00;
+        }
+
+        .code-sample-label {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.8rem;
+            color: #8b949e;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        }
+
+        .code-sample {
+            background: #0d1117;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+
+        .code-sample pre {
+            color: #58a6ff;
+            font-size: 0.85rem;
+        }
+
+        .lead-form-card {
+            background: #1f2937;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #374151;
+        }
+
+        .lead-form-intro {
+            margin: 0 0 1rem 0;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .lead-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .lead-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.75rem;
+            border-radius: 4px;
+            border: 1px solid #4b5563;
+            background: #0d1117;
+            color: #fff;
+        }
+
+        .lead-input:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+            border-color: var(--accent-color);
+        }
+
+        .btn-highlight {
+            background: #ffaa00;
+            color: #000;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-highlight:hover {
+            background: #e69f00;
+        }
+
+        .lead-form-note {
+            margin: 0.5rem 0 0 0;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        }
+
         .btn {
             display: inline-block;
             background-color: var(--success);
@@ -121,17 +281,17 @@
             background-color: #2ea043;
         }
 
+        .btn:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 3px;
+        }
+
         footer {
             text-align: center;
             padding: 2rem;
             color: #8b949e;
             font-size: 0.9rem;
             border-top: 1px solid var(--secondary-color);
-        }
-
-        pre {
-            margin: 0;
-            overflow-x: auto;
         }
 
         .metric {
@@ -179,6 +339,12 @@
             border-bottom: 1px solid var(--accent-color);
         }
 
+        .expand-link:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
         .tradeoff-section {
             margin-top: 6rem;
             padding: 2rem 0;
@@ -188,6 +354,11 @@
         .tradeoff-section h2 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
+        }
+
+        .tradeoff-subtitle {
+            color: #8b949e;
+            margin-bottom: 2rem;
         }
 
         .tradeoff-intro {
@@ -226,6 +397,14 @@
             border-bottom: 1px solid var(--accent-color);
         }
 
+        .comparison-table caption {
+            caption-side: top;
+            text-align: left;
+            color: #8b949e;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
         .comparison-table td {
             padding: 1rem;
             border-bottom: 1px solid var(--secondary-color);
@@ -244,12 +423,26 @@
             color: #ffb347;
         }
 
+        .col-aspect {
+            width: 30%;
+        }
+
+        .col-side {
+            width: 35%;
+        }
+
         .btn-secondary {
             display: inline-block;
             background-color: transparent;
             color: var(--accent-color);
             border: 1px solid var(--accent-color);
             margin-left: 0.75rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
         }
 
         code {
@@ -288,6 +481,22 @@
         }
 
         @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .header-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+
+            .header-link {
+                margin-left: 0;
+            }
+
             .hero h1 {
                 font-size: 1.8rem;
             }
@@ -299,14 +508,14 @@
 </head>
 <body>
 
-    <header style="display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; padding: 2rem 1rem; border-bottom: 1px solid var(--secondary-color);">
+    <header>
         <nav>
             <strong>PuppyTeach</strong> / Engineering
         </nav>
-        <div style="font-family: monospace; font-size: 0.9rem;">
-            <a href="#cursos" style="color: var(--text-color); text-decoration: none; margin-left: 1.5rem;">[ Cursos ]</a>
-            <a href="#tradeoff" style="color: var(--text-color); text-decoration: none; margin-left: 1.5rem;">[ Trade-off ]</a>
-            <a href="#lead-magnet" style="color: var(--accent-color); text-decoration: none; margin-left: 1.5rem;">[ Toolkit_Gratis ]</a>
+        <div class="header-links">
+            <a href="#cursos" class="header-link">[ Cursos ]</a>
+            <a href="#tradeoff" class="header-link">[ Trade-off ]</a>
+            <a href="#lead-magnet" class="header-link header-link-accent">[ Toolkit_Gratis ]</a>
         </div>
     </header>
 
@@ -356,24 +565,24 @@ Swap:  0B total, 0B used, 0B free
             </div>
         </section>
 
-        <section id="lead-magnet" class="cta" style="background: #111827; border: 1px solid #ffaa0044; padding: 3rem 2rem; border-radius: 8px; margin-top: 3rem;">
-            <div style="max-width: 800px; margin: 0 auto; text-align: left;">
-                <span style="background: #ffaa00; color: #000; padding: 0.2rem 0.6rem; font-family: monospace; font-weight: bold; border-radius: 4px; font-size: 0.85rem;">TOOLKIT GRATUITO</span>
-                <h2 style="color: #fff; margin-top: 1rem;">Descarga Code Compacter: El alimentador definitivo para tus agentes de IA</h2>
+        <section id="lead-magnet" class="cta lead-magnet">
+            <div class="lead-magnet-inner">
+                <span class="eyebrow">TOOLKIT GRATUITO</span>
+                <h2 class="lead-magnet-title">Descarga Code Compacter: El alimentador definitivo para tus agentes de IA</h2>
                 
-                <p style="color: #9ca3af; line-height: 1.6;">
+                <p class="lead-magnet-copy">
                     Diseñado bajo la filosofía de minimalismo de Puppy Linux: cero dependencias pesadas, ejecución instantánea y 100% de control sobre tu contexto.
                 </p>
 
-                <ul style="list-style: none; padding: 0; margin: 1.5rem 0; color: #e5e7eb; font-family: monospace; font-size: 0.9rem;">
-                    <li>🔹 <strong style="color: #ffaa00;">Filtro Inteligente:</strong> Respeta patrones de exclusión comunes y detecta archivos binarios (<code>.pdf</code>, <code>.woff2</code>, <code>.png</code>) automáticamente para evitar corromper el prompt.</li>
-                    <li>🔹 <strong style="color: #ffaa00;">Integración Desktop:</strong> Incluye archivo <code>.desktop</code> para lanzarlo con un clic desde tu entorno gráfico.</li>
-                    <li>🔹 <strong style="color: #ffaa00;">Contrato Limpio:</strong> Escrito en Python nativo, portátil y transparente.</li>
+                <ul class="feature-list">
+                    <li>🔹 <strong class="feature-accent">Filtro Inteligente:</strong> Respeta patrones de exclusión comunes y detecta archivos binarios (<code>.pdf</code>, <code>.woff2</code>, <code>.png</code>) automáticamente para evitar corromper el prompt.</li>
+                    <li>🔹 <strong class="feature-accent">Integración Desktop:</strong> Incluye archivo <code>.desktop</code> para lanzarlo con un clic desde tu entorno gráfico.</li>
+                    <li>🔹 <strong class="feature-accent">Contrato Limpio:</strong> Escrito en Python nativo, portátil y transparente.</li>
                 </ul>
 
-                <div style="background: #0d1117; padding: 1rem; border-radius: 6px; border: 1px solid #30363d; margin-bottom: 2rem;">
-                    <p style="margin: 0 0 0.5rem 0; font-size: 0.8rem; color: #8b949e; font-family: monospace;"># Ejemplo de salida generada por la herramienta:</p>
-                    <pre style="margin: 0; color: #58a6ff; font-family: 'Fira Code', monospace; font-size: 0.85rem; overflow-x: auto;">
+                <div class="code-sample">
+                    <p class="code-sample-label"># Ejemplo de salida generada por la herramienta:</p>
+                    <pre>
 ================================================================================
 File: src/main.rs
 ================================================================================
@@ -383,7 +592,7 @@ fn main() {
                     </pre>
                 </div>
 
-                <div style="background: #1f2937; padding: 1.5rem; border-radius: 6px; border: 1px solid #374151;">
+                <div class="lead-form-card">
                     <div data-fs-success style="display: none; color: #2ea043; font-family: monospace; font-weight: bold; margin-bottom: 1rem; padding: 0.5rem; background: rgba(46, 160, 67, 0.1); border-radius: 4px;">
                         ✓ ¡Kit preparado! Revisa tu bandeja de entrada para descargar Code Compacter.
                     </div>
@@ -391,27 +600,28 @@ fn main() {
                         ✕ Ocurrió un error. Por favor, verifica el correo e intenta nuevamente.
                     </div>
 
-                    <p style="margin: 0 0 1rem 0; color: #fff; font-weight: bold;">Introduce tu email para recibir el tar.gz con el código fuente completo:</p>
+                    <p class="lead-form-intro">Introduce tu email para recibir el tar.gz con el código fuente completo:</p>
                     
-                    <form id="puppyteach-capture-form" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    <form id="puppyteach-capture-form" class="lead-form">
                         <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 0.25rem;">
-                            <input type="email" name="email" id="email" placeholder="desarrollador@dominio.com" required data-fs-field
-                                   style="width: 100%; padding: 0.75rem; border-radius: 4px; border: 1px solid #4b5563; background: #0d1117; color: #fff; box-sizing: border-box;">
+                            <label for="lead-email" class="sr-only">Correo electronico</label>
+                            <input id="lead-email" type="email" name="email" placeholder="desarrollador@dominio.com" required data-fs-field
+                                   class="lead-input" style="width: 100%; box-sizing: border-box;">
                             <span data-fs-error="email" style="color: #ffb347; font-size: 0.8rem; font-family: monospace;"></span>
                         </div>
                         
-                        <button type="submit" data-fs-submit-btn class="btn" style="background: #ffaa00; color: #000; font-weight: bold; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; transition: 0.2s; margin-top: 0; height: 46px;">
+                        <button type="submit" data-fs-submit-btn class="btn btn-highlight" style="margin-top: 0; height: 46px;">
                             Enviar Code Compacter de Regalo
                         </button>
                     </form>
-                    <p style="margin: 0.5rem 0 0 0; font-size: 0.75rem; color: #9ca3af; font-family: monospace;">🔒 Cero spam corporativo. Solo el script y las lecciones técnicas de PuppyTeach.</p>
+                    <p class="lead-form-note">🔒 Cero spam corporativo. Solo el script y las lecciones técnicas de PuppyTeach.</p>
                 </div>
             </div>
         </section>
 
         <section id="tradeoff" class="tradeoff-section">
             <h2>⚖️ Docker vs. Save-File Nativo</h2>
-            <p style="color: #8b949e; margin-bottom: 2rem;">Elige tus problemas (y tu consumo de RAM)</p>
+            <p class="tradeoff-subtitle">Elige tus problemas (y tu consumo de RAM)</p>
             
             <div class="tradeoff-intro">
                 <strong>Cualquier solución de ingeniería es un intercambio de problemas.</strong> Docker te promete aislamiento absoluto a cambio de devorarte los recursos. Puppy Linux y su Save-File/Save-Folder nativo te ofrecen rendimiento puro en RAM a cambio de un flujo de trabajo ligeramente diferente.
@@ -419,11 +629,12 @@ fn main() {
 
             <div class="comparison-table-wrapper">
                 <table class="comparison-table">
+                    <caption>Comparativa entre Docker tradicional y Puppy Nativo.</caption>
                     <thead>
                         <tr>
-                            <th style="width: 30%;">Aspecto</th>
-                            <th style="width: 35%;" class="docker-col">Docker (Tradicional)</th>
-                            <th style="width: 35%;" class="puppy-col">Puppy Nativo (TrixieRetro)</th>
+                            <th scope="col" class="col-aspect">Aspecto</th>
+                            <th scope="col" class="docker-col col-side">Docker (Tradicional)</th>
+                            <th scope="col" class="puppy-col col-side">Puppy Nativo (TrixieRetro)</th>
                         </tr>
                     </thead>
                 <tbody>
