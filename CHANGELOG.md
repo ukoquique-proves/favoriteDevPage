@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ## [Unreleased]
+- Integrated Formspree capture form using `@formspree/ajax` script to handle subscriptions asynchronously without page reload.
+- Added custom inline success (`data-fs-success`) and error (`data-fs-error`) status alerts inside the lead magnet form.
+- Added localized validation feedback using a dedicated error span (`data-fs-error="email"`).
+- Created a style guide document `consejos_formato.md` outlining the tone and visual recommendations for the project.
 - Corrected the courses section title from `Catálogo de Cursos (Fase 2)` to `Catálogo de Cursos`.
 - Published the project to GitHub Pages at `https://ukoquique-proves.github.io/fastDevPage/`.
 - Added empathetic status badges and hero CTA to improve first impression.
