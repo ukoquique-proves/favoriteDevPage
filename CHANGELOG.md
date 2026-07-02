@@ -8,6 +8,10 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - Integrated Formspree capture form using `@formspree/ajax` script to handle subscriptions asynchronously without page reload.
 - Added custom inline success (`data-fs-success`) and error (`data-fs-error`) status alerts inside the lead magnet form.
 - Added localized validation feedback using a dedicated error span (`data-fs-error="email"`).
+- Replaced remaining lead form inline styles with reusable CSS classes for easier maintenance.
+- Improved dynamic form feedback accessibility with `aria-live`, `role`, and clearer field descriptions.
+- Clarified CTA copy so hero and section links match their real destinations and primary conversion path.
+- Restructured `ROADMAP.md` into grouped sections covering form flow, CTA consistency, accessibility, SEO, cleanup, and launch tasks.
 - Created a style guide document `consejos_formato.md` outlining the tone and visual recommendations for the project.
 - Corrected the courses section title from `Catálogo de Cursos (Fase 2)` to `Catálogo de Cursos`.
 - Published the project to GitHub Pages at `https://ukoquique-proves.github.io/fastDevPage/`.
