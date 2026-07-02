@@ -30,7 +30,7 @@ El formulario ya está configurado para funcionar con Formspree y AJAX, sin reca
 - Endpoint: `https://formspree.io/f/mnjyeeod`
 - Formulario en `index.html` con `id="puppyteach-capture-form"`
 - Manejo de estados con `data-fs-success` y `data-fs-error`
-- Inicialización usando el CDN de `@formspree/ajax`
+- Inicialización usando una versión fija del CDN de `@formspree/ajax` con SRI y `crossorigin`
 
 Esto significa que el usuario sigue en la misma página y el formulario puede mostrar éxito o error de forma inmediata.
 

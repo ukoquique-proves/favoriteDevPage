@@ -624,7 +624,7 @@ fn main() {
                     <p class="lead-form-intro">Introduce tu email para recibir el tar.gz con el código fuente completo:
                     </p>
 
-                    <form id="puppyteach-capture-form" class="lead-form">
+                    <form id="puppyteach-capture-form" class="lead-form" action="https://formspree.io/f/mnjyeeod" method="POST">
                         <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 0.25rem;">
                             <label for="lead-email" class="sr-only">Correo electronico</label>
                             <input id="lead-email" type="email" name="email" placeholder="desarrollador@dominio.com"
@@ -720,7 +720,10 @@ fn main() {
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', { formElement: '#puppyteach-capture-form', formId: 'mnjyeeod' });
     </script>
-    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+    <script src="https://unpkg.com/@formspree/ajax@1.1.5/dist/index.umd.js"
+        integrity="sha512-7vwR5P/c03o+a2B4TtQ92Q8OV5UfJuGcOgYnxcEWNc2fP//QznIXdd2crC5wt+HWfv39qYHjD7NeDSnDqfSs8w=="
+        crossorigin="anonymous"
+        defer></script>
 
 </body>
 
