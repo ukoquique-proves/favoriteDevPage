@@ -342,57 +342,50 @@
             outline-offset: 3px;
         }
 
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #8b949e;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--secondary-color);
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
         }
 
-        .metric {
-            color: #79c0ff;
+        .btn-secondary:hover {
+            background-color: rgba(88, 166, 255, 0.1);
         }
 
         .badges {
             display: flex;
-            gap: 0.75rem;
-            margin: 1.5rem 0;
             flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
         }
 
         .badge {
-            display: inline-block;
-            background-color: var(--code-bg);
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            padding: 0.4rem 0.8rem;
-            border-radius: 3px;
             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            color: #8b949e;
+            background-color: var(--code-bg);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid var(--secondary-color);
         }
 
         .banner {
-            background-color: var(--secondary-color);
-            padding: 1.5rem;
-            border-left: 3px solid var(--accent-color);
-            border-radius: 4px;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
+            background-color: rgba(255, 170, 0, 0.08);
+            border: 1px solid #ffaa0044;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            color: #e5e7eb;
         }
 
         .expand-link {
-            display: inline-block;
-            margin-top: 1.5rem;
             color: var(--accent-color);
             text-decoration: none;
-            border-bottom: 1px dashed var(--accent-color);
-            font-weight: 500;
-            transition: all 0.2s;
+            font-size: 0.95rem;
         }
 
         .expand-link:hover {
-            border-bottom: 1px solid var(--accent-color);
+            text-decoration: underline;
         }
 
         .expand-link:focus-visible {
@@ -413,6 +406,23 @@
             margin-top: 6rem;
             padding: 2rem 0;
             border-top: 2px solid var(--secondary-color);
+        }
+
+        .inscripciones-section {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--secondary-color);
+        }
+
+        .inscripciones-intro {
+            color: #8b949e;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .lead-form-card--compact {
+            background: var(--code-bg);
+            max-width: 600px;
         }
 
         .tradeoff-section h2 {
@@ -458,120 +468,40 @@
             padding: 1rem;
             text-align: left;
             font-weight: 600;
-            border-bottom: 1px solid var(--accent-color);
-        }
-
-        .comparison-table caption {
-            caption-side: top;
-            text-align: left;
-            color: #8b949e;
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
         }
 
         .comparison-table td {
             padding: 1rem;
-            border-bottom: 1px solid var(--secondary-color);
-            line-height: 1.5;
-        }
-
-        .comparison-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .comparison-table tr:hover {
-            background-color: rgba(88, 166, 255, 0.05);
+            border-top: 1px solid var(--secondary-color);
+            color: #c9d1d9;
         }
 
         .docker-col {
             color: #ffb347;
         }
 
-        .col-aspect {
-            width: 30%;
+        .puppy-col {
+            color: #58a6ff;
         }
 
         .col-side {
-            width: 35%;
+            width: 32%;
         }
 
-        .btn-secondary {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            margin-left: 0.75rem;
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(88, 166, 255, 0.1);
-            color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-
-        code {
-            background-color: #111827;
-            color: #79c0ff;
-            padding: 0.15rem 0.35rem;
-            border-radius: 4px;
-            font-family: "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.95em;
-        }
-
-        pre {
-            margin: 0;
-            overflow-x: auto;
-            background-color: #111827;
-            border: 1px solid var(--secondary-color);
-            border-radius: 6px;
-            padding: 1rem;
-            color: var(--text-color);
-            font-family: "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-        }
-
-        .puppy-col {
-            color: #79c0ff;
-        }
-
-        .tradeoff-close {
-            background-color: var(--secondary-color);
-            padding: 1.5rem;
-            border-left: 3px solid var(--success);
-            border-radius: 4px;
+        .tradeoff-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
             margin-top: 2rem;
-            font-style: italic;
-            color: #8b949e;
-            line-height: 1.8;
         }
 
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            .header-links {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.75rem;
-            }
-
-            .header-link {
-                margin-left: 0;
+        @media (max-width: 640px) {
+            .badges {
+                gap: 0.5rem;
             }
 
             .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .badges {
-                flex-direction: column;
-            }
-
-            .hero-cta-group {
-                flex-direction: column;
-                align-items: flex-start;
+                font-size: 2rem;
             }
         }
     </style>
@@ -599,14 +529,14 @@
             </div>
             <h1>Desarrollo en entornos de 310MB de RAM.</h1>
             <p>Automatización e IA sin el overhead de Docker. Rigor técnico con foco en fricción mínima y métricas reales para desarrolladores senior.</p>
-            <div class="banner">💡 <strong>Sí, puedes correr <code>dockerd</code> nativo en Puppy Linux con solo ~137&nbsp;MB de RAM.</strong>
+            <div class="banner"><span aria-hidden="true">💡</span> <strong>Sí, puedes correr <code>dockerd</code> nativo en Puppy Linux con solo ~137&nbsp;MB de RAM.</strong>
                 Pero si estás usando una máquina con recursos limitados para experimentar con agentes de IA locales,
                 ¿realmente quieres lidiar con drivers de almacenamiento <code>vfs</code>, warnings de cgroups v2 y la
                 falta de <code>systemd</code>? PuppyTeach te da el entorno pre-optimizado listo para picar código en RAM
                 sin configurar <code>daemon.json</code> ni pelearte con capas.</div>
             <div class="hero-cta-group">
                 <a href="#lead-magnet" class="btn">Recibir Code Compacter gratis</a>
-                <a href="#tradeoff" class="expand-link">⚖️ Ver comparación técnica: Docker vs. Puppy →</a>
+                <a href="#tradeoff" class="expand-link"><span aria-hidden="true">⚖️</span> Ver comparación técnica: Docker vs. Puppy →</a>
             </div>
         </section>
 
@@ -647,22 +577,22 @@
             </div>
         </section>
 
-        <section id="inscripciones" style="margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--secondary-color);">
-            <h2>📅 Próximas Cohortes — Octubre 2026</h2>
-            <p style="color: #8b949e; max-width: 700px; margin-bottom: 2rem;">
+        <section id="inscripciones" class="inscripciones-section">
+            <h2><span aria-hidden="true">📅</span> Próximas Cohortes — Octubre 2026</h2>
+            <p class="inscripciones-intro">
                 Los tres cursos del catálogo iniciarán de forma simultánea en <strong>Octubre de 2026</strong>. Las plazas son limitadas debido al soporte personalizado en los entornos de laboratorio. Inscríbete en la lista de interesados para recibir prioridad de matrícula y las fechas exactas de apertura.
             </p>
 
-            <div class="lead-form-card" style="background: #161b22; max-width: 600px;">
+            <div class="lead-form-card lead-form-card--compact">
                 <p class="lead-form-intro">Lista de Espera Prioritaria:</p>
                 
                 <div data-fs-success="waitlist" class="form-status form-status-success" role="status"
                     aria-live="polite" aria-atomic="true" style="display: none;">
-                    ✓ ¡Anotado! Te avisaremos en cuanto se abran los cupos de Octubre 2026.
+                    <span aria-hidden="true">✓</span> ¡Anotado! Te avisaremos en cuanto se abran los cupos de Octubre 2026.
                 </div>
                 <div data-fs-error="waitlist" class="form-status form-status-error" role="alert"
                     aria-live="assertive" aria-atomic="true" style="display: none;">
-                    ✕ Ocurrió un error. Por favor, verifica el correo e intenta nuevamente.
+                    <span aria-hidden="true">✕</span> Ocurrió un error. Por favor, verifica el correo e intenta nuevamente.
                 </div>
                 <!-- Reutiliza Formspree o un formulario directo -->
                 <form id="puppyteach-waitlist-form" class="lead-form" action="https://formspree.io/f/mnjyeeod" method="POST">
@@ -678,10 +608,12 @@
                         Anotarme a la Cohorte
                     </button>
                 </form>
-                <p class="lead-form-note">📧 Te notificaremos únicamente cuando se abran los cupos oficiales. Cero newsletters genéricas.</p>
+                <p class="lead-form-note"><span aria-hidden="true">📧</span> Te notificaremos únicamente cuando se abran los cupos oficiales. Cero newsletters genéricas.</p>
             </div>
         </section>
 
+        <section id="lead-magnet" class="cta lead-magnet">
+            <div class="lead-magnet-inner">
                 <span class="eyebrow">TOOLKIT GRATUITO</span>
                 <h2 class="lead-magnet-title">Descarga Code Compacter: El alimentador definitivo para tus agentes de IA
                 </h2>
@@ -692,12 +624,12 @@
                 </p>
 
                 <ul class="feature-list">
-                    <li>🔹 <strong class="feature-accent">Filtro Inteligente:</strong> Respeta patrones de exclusión
+                    <li><span aria-hidden="true">🔹</span> <strong class="feature-accent">Filtro Inteligente:</strong> Respeta patrones de exclusión
                         comunes y detecta archivos binarios (<code>.pdf</code>, <code>.woff2</code>, <code>.png</code>)
                         automáticamente para evitar corromper el prompt.</li>
-                    <li>🔹 <strong class="feature-accent">Integración Desktop:</strong> Incluye archivo
+                    <li><span aria-hidden="true">🔹</span> <strong class="feature-accent">Integración Desktop:</strong> Incluye archivo
                         <code>.desktop</code> para lanzarlo con un clic desde tu entorno gráfico.</li>
-                    <li>🔹 <strong class="feature-accent">Contrato Limpio:</strong> Escrito en Python nativo, portátil y
+                    <li><span aria-hidden="true">🔹</span> <strong class="feature-accent">Contrato Limpio:</strong> Escrito en Python nativo, portátil y
                         transparente.</li>
                 </ul>
 
@@ -716,18 +648,18 @@ fn main() {
                 <div class="lead-form-card">
                     <div data-fs-success class="form-status form-status-success" role="status" aria-live="polite"
                         aria-atomic="true" style="display: none;">
-                        ✓ ¡Kit preparado! Revisa tu bandeja de entrada para descargar Code Compacter.
+                        <span aria-hidden="true">✓</span> ¡Kit preparado! Revisa tu bandeja de entrada para descargar Code Compacter.
                         <br>
                         <a href="https://github.com/ukoquique-proves/fastDevPage/releases/download/v0.1.0/Code_Compacter.tar.gz"
                            class="btn"
                            style="margin-top: 0.75rem;"
                            download>
-                            ⬇ Descargar Code_Compacter.tar.gz
+                            <span aria-hidden="true">⬇</span> Descargar Code_Compacter.tar.gz
                         </a>
                     </div>
                     <div data-fs-error class="form-status form-status-error" role="alert" aria-live="assertive"
                         aria-atomic="true" style="display: none;">
-                        ✕ Ocurrió un error. Por favor, verifica el correo e intenta nuevamente.
+                        <span aria-hidden="true">✕</span> Ocurrió un error. Por favor, verifica el correo e intenta nuevamente.
                     </div>
 
                     <p id="lead-form-description" class="lead-form-intro">Introduce tu email para recibir el tar.gz con
@@ -752,14 +684,14 @@ fn main() {
                             Enviar Code Compacter de Regalo
                         </button>
                     </form>
-                    <p class="lead-form-note">🔒 Cero spam corporativo. Solo el script y las lecciones técnicas de
+                    <p class="lead-form-note"><span aria-hidden="true">🔒</span> Cero spam corporativo. Solo el script y las lecciones técnicas de
                         PuppyTeach.</p>
                 </div>
             </div>
         </section>
 
         <section id="tradeoff" class="tradeoff-section">
-            <h2>⚖️ Docker en Puppy Linux — Informe Real</h2>
+            <h2><span aria-hidden="true">⚖️</span> Docker en Puppy Linux — Informe Real</h2>
             <p class="tradeoff-subtitle">Informe de pruebas en TrixiePup64Retro 25.09 · Kernel 6.12.85</p>
 
             <div class="tradeoff-intro">
@@ -768,11 +700,9 @@ fn main() {
                 <strong>Docker:</strong> 26.1.5+dfsg1 (repos de Debian)
             </div>
 
-            <div class="banner">💡 <strong>Sí, puedes correr <code>dockerd</code> nativo en Puppy Linux con solo ~137&nbsp;MB de RAM.</strong>
-                Pero si estás usando una máquina con recursos limitados para experimentar con agentes de IA locales,
-                ¿realmente quieres lidiar con drivers de almacenamiento <code>vfs</code>, warnings de cgroups v2 y la
-                falta de <code>systemd</code>? PuppyTeach te da el entorno pre-optimizado listo para picar código en RAM
-                sin configurar <code>daemon.json</code> ni pelearte con capas. [cite: 4]
+            <div class="banner"><span aria-hidden="true">💡</span> Como se explicó al inicio, el reto real no es el
+                consumo de <code>dockerd</code> en sí, sino el driver de almacenamiento <code>vfs</code>, los warnings
+                de cgroups v2 y la falta de <code>systemd</code>. A continuación, los datos completos.
             </div>
 
             <h3>1. Conclusión directa</h3>
