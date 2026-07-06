@@ -66,18 +66,18 @@
                     <p>Dale un propósito a tu vieja máquina de viaje. No necesitas 16 núcleos para correr agentes
                         autónomos de IA de forma fluida si sabes gestionar tus recursos. Aprende a exprimir cada MB de
                         RAM.</p>
-                    <a href="curso-1-hardware-secundario.html" class="expand-link" style="margin-top: 1rem;">Ver programa del curso →</a>
+                    <button class="expand-link" style="margin-top: 1rem; border: none; background: none; color: #58a6ff; cursor: pointer; text-decoration: underline; font: inherit;" onclick="openCourseModal(1)">Ver programa del curso →</button>
                 </article>
                 <article class="course-card">
                     <h3>2. Entornos Inmutables con Save-Files</h3>
                     <p>Aprende a congelar tus dependencias corriendo 100% en RAM a costo cero mediante bloques SquashFS y Save-Folders. Evita lidiar con configuraciones complejas de drivers de almacenamiento, manteniendo persistencia nativa sin capas redundantes.</p>
-                    <a href="curso-2-savefiles.html" class="expand-link" style="margin-top: 1rem;">Ver programa del curso →</a>
+                    <button class="expand-link" style="margin-top: 1rem; border: none; background: none; color: #58a6ff; cursor: pointer; text-decoration: underline; font: inherit;" onclick="openCourseModal(2)">Ver programa del curso →</button>
                 </article>
                 <article class="course-card">
                     <h3>3. Optimización Pipeline TrixieRetro</h3>
                     <p>Scripts de producción optimizados para el stack PuppyTeach. Automatización sin dependencias
                         innecesarias. Código limpio, métricas reales, cero humo.</p>
-                    <a href="curso-3-pipeline-trixieretro.html" class="expand-link" style="margin-top: 1rem;">Ver programa del curso →</a>
+                    <button class="expand-link" style="margin-top: 1rem; border: none; background: none; color: #58a6ff; cursor: pointer; text-decoration: underline; font: inherit;" onclick="openCourseModal(3)">Ver programa del curso →</button>
                 </article>
             </div>
         </section>
@@ -260,6 +260,79 @@ fn main() {
     <footer>
         &copy; 2026 PuppyTeach / Teledígitos. Sin humo, solo métricas.
     </footer>
+
+    <!-- Course Detail Modals -->
+    <dialog id="course-modal-1" style="border: 1px solid var(--secondary-color); border-radius: 8px; background: var(--bg-color); color: var(--text-color); padding: 2rem; max-width: 600px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+        <h2>Curso 1 · Resurrección de Hardware Secundario</h2>
+        <p>Da un propósito real a esa laptop vieja, al mini PC olvidado o al portátil que ya no tiene fuerza para Docker Desktop.</p>
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Qué aprenderás</h3>
+        <ul class="feature-list">
+            <li><strong>Diagnóstico de recursos:</strong> identificar qué parte del sistema realmente limita el flujo de trabajo.</li>
+            <li><strong>Optimización de RAM y CPU:</strong> trabajar con un entorno que no malgaste ciclos en demonios innecesarios.</li>
+            <li><strong>Flujos de agentes locales:</strong> preparar un entorno para ejecutar tareas de IA sin depender de infraestructura pesada.</li>
+            <li><strong>Operación con hardware secundario:</strong> convertir una máquina antigua en un laboratorio útil y estable.</li>
+        </ul>
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Para quién va dirigido</h3>
+        <p>Para personas que ya saben programar y quieren un entorno más honesto, más ligero y más eficiente para trabajar desde un equipo secundario sin perder productividad.</p>
+        <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+            <a href="curso-1-hardware-secundario.html" class="btn" style="flex: 1; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; min-width: 150px;">Ver programa completo →</a>
+            <button onclick="closeCourseModal(1)" class="btn btn-secondary" style="flex: 1; min-width: 150px;">Cerrar</button>
+        </div>
+    </dialog>
+
+    <dialog id="course-modal-2" style="border: 1px solid var(--secondary-color); border-radius: 8px; background: var(--bg-color); color: var(--text-color); padding: 2rem; max-width: 600px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+        <h2>Curso 2 · Entornos Inmutables con Save-Files</h2>
+        <p>Aprende a congelar dependencias y correr 100% en RAM sin pelearte con capas, drivers de almacenamiento y demoras absurdas.</p>
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Qué aprenderás</h3>
+        <ul class="feature-list">
+            <li><strong>Save-Files y persistencia:</strong> separar lo que debe cambiar de lo que debe mantenerse estable.</li>
+            <li><strong>Entornos inmutables:</strong> trabajar con snapshots y estados previsibles sin hacer magia oscura.</li>
+            <li><strong>Optimización de RAM:</strong> reducir el gasto innecesario y hacer que el sistema responda con más claridad.</li>
+            <li><strong>Menos capas, menos caos:</strong> entender por qué la simplicidad del sistema base a veces gana a la complejidad del contenedor.</li>
+        </ul>
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Para quién va dirigido</h3>
+        <p>Para quienes ya están cansados de montajes pesados y quieren trabajar con un modelo más claro: reproducible, rápido y honesto con el hardware real.</p>
+        <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+            <a href="curso-2-savefiles.html" class="btn" style="flex: 1; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; min-width: 150px;">Ver programa completo →</a>
+            <button onclick="closeCourseModal(2)" class="btn btn-secondary" style="flex: 1; min-width: 150px;">Cerrar</button>
+        </div>
+    </dialog>
+
+    <dialog id="course-modal-3" style="border: 1px solid var(--secondary-color); border-radius: 8px; background: var(--bg-color); color: var(--text-color); padding: 2rem; max-width: 600px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+        <h2>Curso 3 · Optimización Pipeline TrixieRetro</h2>
+        <p>Diseña pipelines de automatización limpios, rápidos y fáciles de mantener para entornos con recursos limitados.</p>
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Qué aprenderás</h3>
+        <ul class="feature-list">
+            <li><strong>Scripts y automatización:</strong> hacer pipeline con menos ruido y más claridad.</li>
+            <li><strong>Optimización real de rendimiento:</strong> enfocarte en lo que realmente cuesta CPU y tiempo.</li>
+            <li><strong>Métricas y observabilidad:</strong> medir antes de inventar más capas.</li>
+            <li><strong>Trabajo con entornos frugales:</strong> construir flujos que sigan funcionando cuando el hardware no es generoso.</li>
+        </ul>
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Para quién va dirigido</h3>
+        <p>Para ingenieros que quieren automatizar con criterio, sin llenar el sistema de dependencias innecesarias ni perder el control del entorno.</p>
+        <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+            <a href="curso-3-pipeline-trixieretro.html" class="btn" style="flex: 1; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; min-width: 150px;">Ver programa completo →</a>
+            <button onclick="closeCourseModal(3)" class="btn btn-secondary" style="flex: 1; min-width: 150px;">Cerrar</button>
+        </div>
+    </dialog>
+
+    <script>
+        // Course Modal Management
+        function openCourseModal(courseNum) {
+            const modal = document.getElementById(`course-modal-${courseNum}`);
+            if (modal) modal.showModal();
+        }
+        function closeCourseModal(courseNum) {
+            const modal = document.getElementById(`course-modal-${courseNum}`);
+            if (modal) modal.close();
+        }
+        // Close modal when clicking outside (backdrop)
+        document.querySelectorAll('dialog').forEach(dialog => {
+            dialog.addEventListener('click', (e) => {
+                if (e.target === dialog) dialog.close();
+            });
+        });
+    </script>
 
     <script>
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };

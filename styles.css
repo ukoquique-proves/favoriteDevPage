@@ -492,3 +492,30 @@ section {
         font-size: 2rem;
     }
 }
+
+/* Dialog / Modal Styles */
+dialog {
+    border-radius: 8px;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+dialog > h2 {
+    margin-top: 0;
+    color: var(--accent-color);
+}
+
+dialog .btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: 1px solid var(--secondary-color);
+}
+
+dialog .btn-secondary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
