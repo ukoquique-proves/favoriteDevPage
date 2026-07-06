@@ -9,6 +9,8 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 ### Added
 - `toolkit.html`: dedicated page for Code Compacter with full detail copy, feature list, code sample output, and the email capture form (`id="puppyteach-capture-form"`).
 - `serve.sh`: launches a local HTTP server and opens the browser automatically from any directory, polling until the server is ready before opening.
+- `check.sh`: pre-push consistency checker. Validates file existence, nav links, shared asset references, form placement, README coverage, placeholder hygiene, and internal link integrity across all HTML pages.
+- `push.sh`: runs `check.sh` before every push; aborts if any check fails. Accepts an optional commit message argument or prompts interactively.
 - Waitlist form (`id="puppyteach-waitlist-form"`) in `index.html` wired to Formspree SDK with inline success/error feedback (`data-fs-success="waitlist"`, `data-fs-error="waitlist"`).
 - Three standalone course detail pages (`curso-1-hardware-secundario.html`, `curso-2-savefiles.html`, `curso-3-pipeline-trixieretro.html`) with full program information, learning objectives, and target audience.
 - Lightweight SVG favicon linked from all pages.
