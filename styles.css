@@ -113,15 +113,28 @@ section {
     gap: 1.5rem;
 }
 
+.course-card-link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+.course-card-link:focus-visible .course-card {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
 .course-card {
     background-color: var(--code-bg);
     padding: 1.5rem;
     border-radius: 6px;
     border: 1px solid var(--secondary-color);
     transition: border-color 0.2s;
+    height: 100%;
+    box-sizing: border-box;
 }
 
-.course-card:hover {
+.course-card-link:hover .course-card {
     border-color: var(--accent-color);
 }
 
