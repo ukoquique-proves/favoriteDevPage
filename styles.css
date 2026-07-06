@@ -482,18 +482,6 @@ section {
     color: #c9d1d9;
 }
 
-.docker-col {
-    color: #ffb347;
-}
-
-.puppy-col {
-    color: #58a6ff;
-}
-
-.col-side {
-    width: 32%;
-}
-
 .tradeoff-cta {
     display: flex;
     flex-wrap: wrap;

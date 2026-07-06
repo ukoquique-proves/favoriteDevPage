@@ -18,7 +18,9 @@ curso-1-hardware-secundario.html  # Detalle del Curso 1
 curso-2-savefiles.html            # Detalle del Curso 2
 curso-3-pipeline-trixieretro.html # Detalle del Curso 3
 styles.css                        # Hoja de estilos compartida por todas las páginas
-serve.sh                          # Script de desarrollo local
+serve.sh                          # Levanta servidor local y abre el browser automáticamente
+check.sh                          # Verifica consistencia del proyecto antes de hacer push
+push.sh                           # Ejecuta check.sh y sube los cambios a GitHub
 ```
 
 ## Formulario integrado con Formspree
@@ -40,13 +42,33 @@ Ambos formularios usan Formspree AJAX (`@formspree/ajax@1.1.5`) sin recarga de p
 
 ## Desarrollo local
 
-Corre `serve.sh` desde cualquier carpeta para levantar el servidor y abrir el browser automáticamente:
+Levanta el servidor y abre el browser automáticamente:
 
 ```bash
 ./serve.sh
 ```
 
 El script espera a que el servidor responda antes de abrir `http://localhost:8080`.
+
+## Subir cambios a GitHub
+
+Usa `push.sh` en lugar de `git push` directamente. Ejecuta todas las validaciones antes de subir y aborta si algo falla:
+
+```bash
+./push.sh "mensaje del commit"
+```
+
+Si no pasas el mensaje como argumento, lo pedirá de forma interactiva.
+
+## Validación de consistencia
+
+Para correr las comprobaciones sin hacer push:
+
+```bash
+./check.sh
+```
+
+Valida existencia de archivos, nav links, assets compartidos, placement de formularios, cobertura en README, placeholders sin completar e integridad de links internos.
 
 ## Mantenimiento
 
