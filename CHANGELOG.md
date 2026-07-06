@@ -7,6 +7,9 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 ## [Unreleased]
 
 ### Added
+- Three standalone course detail pages (`curso-1-hardware-secundario.html`, `curso-2-savefiles.html`, `curso-3-pipeline-trixieretro.html`) with full program information, learning objectives, and target audience.
+- Course detail modals on landing page using native HTML5 `<dialog>` elements—no framework, no external dependencies.
+- JavaScript modal management functions (`openCourseModal()`, `closeCourseModal()`) with backdrop and close-on-click behavior.
 - Lightweight SVG favicon linked from `index.html`.
 - Formspree AJAX integration using `@formspree/ajax` for asynchronous lead capture without page reload.
 - Custom success (`data-fs-success`) and error (`data-fs-error`) status alerts inside the lead magnet form.
@@ -18,6 +21,8 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - Style guide document `consejos_formato.md`.
 
 ### Changed
+- Course card CTAs now open modal dialogs with course previews instead of direct external links, improving engagement on landing page.
+- Extracted reusable stylesheet (`styles.css`) shared across landing page and all course detail pages, eliminating CSS duplication.
 - Replaced remaining lead form inline styles with reusable CSS classes.
 - Improved dynamic form feedback accessibility with `aria-live`, `role`, and clearer field descriptions.
 - Clarified CTA copy so hero and section links match their real destinations and primary conversion path.
