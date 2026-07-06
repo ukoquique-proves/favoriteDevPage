@@ -43,7 +43,7 @@ Ambos formularios usan Formspree AJAX (`@formspree/ajax@1.1.5`) sin recarga de p
 Corre `serve.sh` desde cualquier carpeta para levantar el servidor y abrir el browser automáticamente:
 
 ```bash
-/root/aPROYECTOS/LANDING_PAGE/uko_WebSite/serve.sh
+./serve.sh
 ```
 
 El script espera a que el servidor responda antes de abrir `http://localhost:8080`.

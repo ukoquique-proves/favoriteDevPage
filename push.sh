@@ -1,5 +1,6 @@
 #!/bin/bash
-cd /root/aPROYECTOS/LANDING_PAGE/uko_WebSite
+DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$DIR"
 
 echo "Running consistency checks before push..."
 bash check.sh
