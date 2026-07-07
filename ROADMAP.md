@@ -1,41 +1,30 @@
 # ROADMAP
 
-## Hecho
+## Estado actual
 
-- [x] Resolver conflictos y unificar las mejoras de diseño y accesibilidad de la rama remota.
-- [x] Integrar el script de Formspree AJAX y validar localmente el flujo de suscripción.
-- [x] Reemplazar `TU_ID_AQUI` por el Formspree real (`mnjyeeod`).
-- [x] Publicar `Code_Compacter.tar.gz` en GitHub Releases para entrega directa.
-- [x] Añadir un botón de descarga visible en el mensaje de éxito del formulario.
-- [x] Crear la página de agradecimiento `gracias.html` y configurar el campo oculto `_next` para fallback sin JavaScript.
-- [x] Mejorar la accesibilidad del formulario con regiones en vivo y una descripción más clara del campo.
-- [x] Añadir el favicon para GitHub Pages.
+Se han aplicado múltiples mejoras menores, accesibilidad y flujo de entrega del toolkit. Para evitar ruido, las tareas completas han sido retiradas de la sección principal — el foco ahora pasa a las mejoras de mantenimiento y calidad a continuación.
 
-## Flujo del formulario
+## Flujo del formulario (prioridad: alta)
 
-- [x] Mantener el formulario conectado a Formspree para captura básica de leads; la entrega del toolkit ya ocurre inline en la página.
-- [x] No necesario: la descarga ya ocurre inline (JS) y vía gracias.html (fallback), así que no se requiere autoresponder de Formspree.
-- [ ] Ejecutar una prueba real de envío desde el formulario publicado y verificar que los correos de lead llegan correctamente.
-- [ ] Revisar todos los CTA del sitio y ajustar el texto para que cada botón o enlace describa con precisión su destino.
+- [ ] Ejecutar una prueba de extremo a extremo contra el sitio publicado y verificar que Formspree recibe las entradas (aceptación: registro visible en el panel de Formspree y llegada de notificaciones al inbox configurado).
+- [ ] Revisar y estandarizar los CTA del sitio para que describan con precisión su destino (aceptación: cada CTA tiene texto claro y un `title`/atributo `aria-label` cuando procede).
 
-## Accesibilidad y SEO
+## Accesibilidad y SEO (prioridad: medium)
 
-- [x] Añadir un skip link en la parte superior para usuarios de teclado.
-- [x] Añadir metadata Open Graph, Twitter y canonical.
-- [ ] Preparar una imagen social y revisar el favicon para garantizar una vista previa correcta en redes.
-- [ ] Fortalecer el SEO de todas las páginas añadiendo canonical, imagen Open Graph/Twitter, JSON-LD, author, robots y theme-color donde sea pertinente.
+- [ ] Preparar y publicar una imagen social compartida y revisar el favicon para asegurar vistas previas correctas (aceptación: `og:image` válida y preview aceptable en la herramienta de depuración de redes sociales).
+- [ ] Añadir metadatos consistentes por página: `canonical`, `og:image`, `twitter:image`, `author`, `theme-color` y `JSON-LD` básico (aceptación: cada página principal tiene `canonical` y al menos `og:title`/`og:description`).
 
 ## Contenido y credibilidad
 
 - [x] Añadir una nota breve de metodología para los benchmarks de RAM y latencia.
 - [ ] Revisar el copy principal y reescribir cualquier afirmación que suene absoluta para que quede alineada con resultados medidos.
 
-## Arquitectura y mantenimiento
+## Arquitectura y mantenimiento (priority: high → low)
 
-- [ ] Replantear la validación del sitio para usar un parser HTML en lugar de depender tanto de `grep` y comprobaciones textuales frágiles.
-- [ ] Extender el checker para validar estructura, enlaces y atributos de forma más robusta ante cambios de formato del HTML.
-- [ ] Dividir el stylesheet monolítico en módulos más pequeños como base.css, layout.css, buttons.css, forms.css, hero.css, cards.css, tradeoff.css y utilities.css.
-- [ ] Reducir la duplicación de header y footer entre páginas mediante un sistema de plantillas, generador estático o paso de build.
+- [ ] Replace fragile grep checks with a parser-based validator (quick win): implement a small HTML parse check that verifies file parseability and presence of critical elements. (acceptance: new `tools/html_checker.py` runs without crashing and reports missing critical items).
+- [ ] Improve the checker to validate structural items (links, anchors, form placement) using the parser instead of regexes (acceptance: equivalent checks pass for current site and are robust to attribute ordering/whitespace).
+- [ ] Split `styles.css` into modular files (`base.css`, `layout.css`, `forms.css`, `buttons.css`, `hero.css`, `cards.css`, `tradeoff.css`, `utilities.css`) and update pages to load the modular CSS (acceptance: visual parity maintained and `check.sh` still passes).
+- [ ] Remove header/footer duplication by introducing a simple build step or adopting a lightweight SSG (Eleventy/Astro/Hugo) — evaluate cost/benefit first and implement a prototype if agreed (acceptance: template approach generates identical HTML pages and reduces duplication).
 
 ## Lanzamiento y distribución
 

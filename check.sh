@@ -111,6 +111,11 @@ for f in "${HTML_FILES[@]}"; do
     done < <(grep -oP 'href="\K[^"]+' "$f" | grep '\.html')
 done
 
+echo
+echo "=== Parser-based HTML check ==="
+if command -v python3 >/dev/null 2>&1; then
+  python3 tools/html_checker.py || exit 1
+fi
 echo ""
 if [ "$ERRORS" -eq 0 ]; then
     echo "✓ All checks passed."
