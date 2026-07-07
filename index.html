@@ -106,17 +106,9 @@
 
             <div class="lead-form__card lead-form__card--compact">
                 <p class="lead-form__intro">Lista de Espera Prioritaria:</p>
-                
-                <div data-fs-success="waitlist" class="form-status form-status-success" role="status"
-                    aria-live="polite" aria-atomic="true" style="display: none;">
-                    <span aria-hidden="true">✓</span> ¡Anotado! Te avisaremos en cuanto se abran los cupos de Octubre 2026.
-                </div>
-                <div data-fs-error="waitlist" class="form-status form-status-error" role="alert"
-                    aria-live="assertive" aria-atomic="true" style="display: none;">
-                    <span aria-hidden="true">✕</span> Ocurrió un error. Por favor, verifica el correo e intenta nuevamente.
-                </div>
-                <!-- Reutiliza Formspree o un formulario directo -->
-                <form id="puppyteach-waitlist-form" class="lead-form" data-formspree-form data-formspree-endpoint="https://formspree.io/f/mnjyeeod" action="https://formspree.io/f/mnjyeeod" method="POST">
+
+                <!-- Envío directo del navegador a Formspree, con redirección a lista-espera-gracias.html -->
+                <form id="puppyteach-waitlist-form" class="lead-form" action="https://formspree.io/f/mnjyeeod" method="POST">
                     <input type="hidden" name="_subject" value="Nueva inscripción - Cohorte Octubre 2026">
                     <input type="hidden" name="_next" value="https://ukoquique-proves.github.io/fastDevPage/lista-espera-gracias.html">
 
@@ -135,9 +127,9 @@
         </section>
 
         <section id="lead-magnet" class="cta lead-magnet">
-            <div class="lead-magnet-inner">
+            <div class="lead-magnet__inner">
                 <span class="eyebrow">TOOLKIT GRATUITO</span>
-                <h2 class="lead-magnet-title">Descarga Code Compacter: El alimentador definitivo para tus agentes de inteligencia artificial</h2>
+                <h2 class="lead-magnet__title">Descarga Code Compacter: El alimentador definitivo para tus agentes de inteligencia artificial</h2>
                 <a href="toolkit.html" class="btn">Obtener toolkit gratis</a>
             </div>
         </section>
@@ -207,9 +199,6 @@
     <footer>
         &copy; 2026 PuppyTeach / Teledígitos. Sin humo, solo métricas.
     </footer>
-
-    <script src="form-config.js"></script>
-    <script src="forms.js"></script>
 
 </body>
 

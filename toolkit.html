@@ -55,42 +55,24 @@ fn main() {
         </section>
 
         <section class="cta lead-magnet">
-            <div class="lead-magnet-inner">
-                <h2 class="lead-magnet-title">Recibe el toolkit gratis</h2>
+            <div class="lead-magnet__inner">
+                <h2 class="lead-magnet__title">Recibe el toolkit gratis</h2>
 
                 <div class="lead-form__card">
-                    <div data-fs-success class="form-status form-status-success" role="status" aria-live="polite"
-                        aria-atomic="true" style="display: none;">
-                        <span aria-hidden="true">✓</span> ¡Kit preparado! Descárgalo ahora mismo:
-                        <br>
-                        <a href="https://github.com/ukoquique-proves/fastDevPage/releases/download/v0.1.0/Code_Compacter.tar.gz"
-                            class="btn btn--tight-top">
-                            <span aria-hidden="true">⬇</span> Descargar Code_Compacter.tar.gz
-                        </a>
-                    </div>
-                    <div data-fs-error class="form-status form-status-error" role="alert" aria-live="assertive"
-                        aria-atomic="true" style="display: none;">
-                        <span aria-hidden="true">✕</span> Ocurrió un error. Por favor, verifica el correo e intenta nuevamente.
-                    </div>
+                    <p id="lead-form-description" class="lead-form__intro">Introduce tu email para acceder al toolkit. Al enviar el formulario serás redirigido a la página de descarga:</p>
 
-                    <p id="lead-form-description" class="lead-form__intro">Introduce tu email para acceder al toolkit (el enlace de descarga aparecerá aquí mismo):</p>
-
-                    <form id="puppyteach-capture-form" class="lead-form" data-formspree-form data-formspree-endpoint="https://formspree.io/f/mnjyeeod"
-                        action="https://formspree.io/f/mnjyeeod" method="POST" aria-describedby="lead-form-description">
+                    <form id="puppyteach-capture-form" class="lead-form" action="https://formspree.io/f/mnjyeeod" method="POST" aria-describedby="lead-form-description">
                         <input type="hidden" name="_next" value="https://ukoquique-proves.github.io/fastDevPage/gracias.html">
                         <input type="hidden" name="_subject" value="Descarga Code Compacter - Toolkit PuppyTeach">
                         <div class="lead-form__field">
                             <label for="lead-email" class="sr-only">Correo electrónico</label>
                             <input id="lead-email" type="email" name="email" placeholder="desarrollador@dominio.com"
-                                required data-fs-field class="lead-form__input lead-form__input--full"
-                                aria-describedby="lead-email-help lead-email-error">
+                                required class="lead-form__input lead-form__input--full"
+                                aria-describedby="lead-email-help">
 
               <span id="lead-email-help" class="lead-form__help">Usa un correo válido para continuar.</span>
-
-                            <span id="lead-email-error" data-fs-error="email" class="lead-form__error"
-                                role="alert" aria-live="polite"></span>
                         </div>
-                        <button type="submit" data-fs-submit-btn class="btn btn--highlight lead-form__submit">
+                        <button type="submit" class="btn btn--highlight lead-form__submit">
                             Enviar Code Compacter de Regalo
                         </button>
                     </form>
@@ -103,9 +85,6 @@ fn main() {
     <footer>
         &copy; 2026 PuppyTeach / Teledígitos. Sin humo, solo métricas.
     </footer>
-
-    <script src="form-config.js"></script>
-    <script src="forms.js"></script>
 </body>
 
 </html>

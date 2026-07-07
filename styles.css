@@ -337,11 +337,6 @@ section {
     padding: 0 1.5rem;
 }
 
-.btn--tight-top,
-.btn-tight-top {
-    margin-top: 0.75rem;
-}
-
 .page-centered main {
     display: flex;
     align-items: center;
@@ -366,25 +361,6 @@ section {
 .lead-form__submit {
     margin-top: 0;
     height: 46px;
-}
-
-.form-status {
-    display: none;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    border-radius: 4px;
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    font-weight: bold;
-}
-
-.form-status-success {
-    color: #2ea043;
-    background: rgba(46, 160, 67, 0.1);
-}
-
-.form-status-error {
-    color: #ffb347;
-    background: rgba(255, 179, 71, 0.1);
 }
 
 .btn {
@@ -558,31 +534,4 @@ section {
     .hero h1 {
         font-size: 2rem;
     }
-}
-
-/* Dialog / Modal Styles */
-dialog {
-    border-radius: 8px;
-}
-
-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(2px);
-}
-
-dialog > h2 {
-    margin-top: 0;
-    color: var(--accent-color);
-}
-
-dialog .btn-secondary {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    border: 1px solid var(--secondary-color);
-}
-
-dialog .btn-secondary:hover {
-    background-color: var(--secondary-color);
-    border-color: var(--accent-color);
-    color: var(--accent-color);
 }
