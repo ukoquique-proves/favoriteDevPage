@@ -1,22 +1,9 @@
 (function () {
-    window.formspree = window.formspree || function () {
-        (formspree.q = formspree.q || []).push(arguments);
-    };
-
     document.addEventListener('DOMContentLoaded', function () {
-        const forms = [
-            { selector: '#puppyteach-waitlist-form', formId: 'mnjyeeod' },
-            { selector: '#puppyteach-capture-form', formId: 'mnjyeeod' }
-        ];
-
-        forms.forEach(function (formConfig) {
-            const form = document.querySelector(formConfig.selector);
-            if (form) {
-                formspree('initForm', {
-                    formElement: formConfig.selector,
-                    formId: formConfig.formId
-                });
-            }
+        document.querySelectorAll('form[data-formspree-form]').forEach(function (form) {
+            const endpoint = form.dataset.formspreeEndpoint || window.PUPPYTEACH_FORM_CONFIG?.formspreeEndpoint || 'https://formspree.io/f/mnjyeeod';
+            form.action = endpoint;
+            form.setAttribute('accept-charset', 'utf-8');
         });
     });
 })();
