@@ -19,6 +19,8 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - `gracias.html`: no-JS fallback confirmation page with direct download link.
 - `lista-espera-gracias.html`: no-JS fallback confirmation page for the waitlist form.
 - Style guide document `consejos_formato.md`.
+ - `forms.js`: small progressive enhancement helper that wires form `action` attributes to the configured Formspree endpoint.
+ - `TROUBLESHOOTING.md`: documented investigation notes and recommended next steps for the gift-delivery issue.
 
 ### Changed
 - `index.html` `#lead-magnet` section stripped to title + CTA only; all detail content and the capture form moved to `toolkit.html`.
@@ -39,6 +41,10 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - README rewritten to reflect current multi-file architecture and document all three scripts.
 - Clarified in `ROADMAP.md` and `VISITORS_GIFT.md` that Formspree is used for lead capture only, while toolkit delivery already happens inline on the page and via `gracias.html`.
 - Simplified `.env.example` to clarify that current scripts do not require environment variables.
+ - Switched form submission to the standard browser POST flow (fallback to `gracias.html`) to avoid unreliable AJAX-only behavior.
+ - Consolidated form initialization into `forms.js` and removed the fragile dependency on the Formspree AJAX SDK for core delivery flows.
+ - Refactored several form-related CSS classes to a BEM-like naming convention (e.g. `lead-form__*`) and updated `styles.css` and templates accordingly.
+ - Updated `sitemap.xml` to exclude confirmation-only pages (`gracias.html`, `lista-espera-gracias.html`).
 
 ### Fixed
 - Removed dead CSS classes (`.col-side`, `.docker-col`, `.puppy-col`) with no corresponding HTML usage.
@@ -49,6 +55,8 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - Fixed the secondary CTA hover state so it no longer inherited primary button styling.
 - Improved keyboard accessibility with visible `:focus-visible` states across all interactive elements.
 - Improved form accessibility with proper label association for email fields.
+ - Fixed unreliable gift delivery caused by client-side SDK submission flow; forms now follow the browser POST → success page flow so the direct-download link is reachable.
+ - Removed confirmation-only pages from `sitemap.xml` to avoid exposing download pages in search results.
 
 ### Published
 - Published the project to GitHub Pages at `https://ukoquique-proves.github.io/fastDevPage/`.
