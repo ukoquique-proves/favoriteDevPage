@@ -1,30 +1,35 @@
 # ROADMAP
 
+# ROADMAP
+
 ## Estado actual
 
-Se han aplicado múltiples mejoras menores, accesibilidad y flujo de entrega del toolkit. Para evitar ruido, las tareas completas han sido retiradas de la sección principal — el foco ahora pasa a las mejoras de mantenimiento y calidad a continuación.
+La hoja se centra ahora en las mejoras pendientes más relevantes para la estrategia de producto y el mantenimiento del sitio.
+
+## Posicionamiento y narrativa (prioridad: alta)
+
+- [ ] Reescribir el hero para pasar de una propuesta centrada en hardware/ram a una narrativa de control arquitectónico, determinismo y reducción de deuda técnica generada por IA.
+- [ ] Rediseñar el catálogo de cursos/workshops para que refleje los tres ejes del orquestador propuesto: loops cerrados con compilador, Arquitectura Hexagonal y DDD, y soberanía tecnológica/ejecución local.
+- [ ] Estructurar el contenido interno de los programas de estudio en cada una de las páginas individuales de los cursos, con módulos, objetivos y entregables claros.
+- [ ] Reposicionar el toolkit como un "Extractor de Contexto Arquitectónico Seguro" en lugar de un simple alimentador para agentes de IA.
+- [ ] Ajustar la tabla de trade-off para hablar del dolor del CTO (deuda técnica silenciosa, arquitectura limpia y control del código generado por IA) en lugar de enfatizar solo el ahorro de RAM.
 
 ## Flujo del formulario (prioridad: alta)
 
-- [ ] Ejecutar una prueba de extremo a extremo contra el sitio publicado y verificar que Formspree recibe las entradas (aceptación: registro visible en el panel de Formspree y llegada de notificaciones al inbox configurado).
-- [ ] Revisar y estandarizar los CTA del sitio para que describan con precisión su destino (aceptación: cada CTA tiene texto claro y un `title`/atributo `aria-label` cuando procede).
+- [ ] Ejecutar una prueba de extremo a extremo contra el sitio publicado y verificar que Formspree recibe las entradas y que el flujo de éxito llega a la página correcta.
+- [ ] Revisar y estandarizar los CTA del sitio para que describan con precisión su destino y su valor de negocio.
 
 ## Accesibilidad y SEO (prioridad: medium)
 
-- [ ] Preparar y publicar una imagen social compartida y revisar el favicon para asegurar vistas previas correctas (aceptación: `og:image` válida y preview aceptable en la herramienta de depuración de redes sociales).
-- [ ] Añadir metadatos consistentes por página: `canonical`, `og:image`, `twitter:image`, `author`, `theme-color` y `JSON-LD` básico (aceptación: cada página principal tiene `canonical` y al menos `og:title`/`og:description`).
+- [ ] Preparar y publicar una imagen social compartida y revisar el favicon para asegurar vistas previas correctas.
+- [ ] Añadir metadatos consistentes por página: `canonical`, `og:image`, `twitter:image`, `author`, `theme-color` y `JSON-LD` básico.
 
-## Contenido y credibilidad
+## Arquitectura y mantenimiento (prioridad: media/baja)
 
-- [x] Añadir una nota breve de metodología para los benchmarks de RAM y latencia.
-- [ ] Revisar el copy principal y reescribir cualquier afirmación que suene absoluta para que quede alineada con resultados medidos.
-
-## Arquitectura y mantenimiento (priority: high → low)
-
-- [ ] Replace fragile grep checks with a parser-based validator (quick win): implement a small HTML parse check that verifies file parseability and presence of critical elements. (acceptance: new `tools/html_checker.py` runs without crashing and reports missing critical items).
-- [ ] Improve the checker to validate structural items (links, anchors, form placement) using the parser instead of regexes (acceptance: equivalent checks pass for current site and are robust to attribute ordering/whitespace).
-- [ ] Split `styles.css` into modular files (`base.css`, `layout.css`, `forms.css`, `buttons.css`, `hero.css`, `cards.css`, `tradeoff.css`, `utilities.css`) and update pages to load the modular CSS (acceptance: visual parity maintained and `check.sh` still passes).
-- [ ] Remove header/footer duplication by introducing a simple build step or adopting a lightweight SSG (Eleventy/Astro/Hugo) — evaluate cost/benefit first and implement a prototype if agreed (acceptance: template approach generates identical HTML pages and reduces duplication).
+- [ ] Sustituir las comprobaciones frágiles basadas en `grep` por una validación basada en un parser HTML.
+- [ ] Mejorar el checker para validar estructura, enlaces, anclas y ubicación de formularios con mayor robustez frente a cambios de formato HTML.
+- [ ] Dividir `styles.css` en módulos más pequeños (`base.css`, `layout.css`, `forms.css`, `buttons.css`, `hero.css`, `cards.css`, `tradeoff.css`, `utilities.css`).
+- [ ] Reducir la duplicación de header/footer mediante plantillas, un paso de build o un generador estático ligero.
 
 ## Lanzamiento y distribución
 

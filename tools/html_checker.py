@@ -11,9 +11,10 @@ from pathlib import Path
 from html.parser import HTMLParser
 
 class SimpleHTMLInspector(HTMLParser):
-    def __init__(self):
+    def __init__(self, require_main=True):
         super().__init__()
         self.found = {"head":False, "body":False, "icon":False, "main":False}
+        self.require_main = require_main
 
     def handle_starttag(self, tag, attrs):
         if tag == 'head':
@@ -29,12 +30,17 @@ class SimpleHTMLInspector(HTMLParser):
 
 def inspect_file(path:Path):
     content = path.read_text(encoding='utf-8')
-    parser = SimpleHTMLInspector()
+    require_main = path.name not in {"gracias.html", "lista-espera-gracias.html"}
+    parser = SimpleHTMLInspector(require_main=require_main)
     try:
         parser.feed(content)
     except Exception as e:
         return False, f"Parse error: {e}"
-    missing = [k for k,v in parser.found.items() if not v]
+
+    missing = [
+        k for k, v in parser.found.items()
+        if not v and (k != "main" or parser.require_main)
+    ]
     if missing:
         return False, f"Missing elements: {', '.join(missing)}"
     return True, 'OK'

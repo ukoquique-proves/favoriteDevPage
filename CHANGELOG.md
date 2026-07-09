@@ -12,7 +12,7 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - `check.sh`: pre-push consistency checker. Validates file existence, nav links, shared asset references, form placement, README coverage, placeholder hygiene, and internal link integrity across all HTML pages.
 - `push.sh`: runs `check.sh` before every push; aborts if any check fails. Accepts an optional commit message argument or prompts interactively.
 - Waitlist form (`id="puppyteach-waitlist-form"`) in `index.html` wired to Formspree SDK with inline success/error feedback (`data-fs-success="waitlist"`, `data-fs-error="waitlist"`).
-- Three standalone course detail pages (`curso-1-hardware-secundario.html`, `curso-2-savefiles.html`, `curso-3-pipeline-trixieretro.html`) with full program information, learning objectives, and target audience.
+- Three standalone course detail pages (`curso-1-loops-compilador.html`, `curso-2-arquitectura-hexagonal.html`, `curso-3-soberania-local.html`) with full program information, learning objectives, and target audience.
 - Lightweight SVG favicon linked from all pages.
 - Formspree AJAX integration using a pinned version of `@formspree/ajax` with SRI and `crossorigin`.
 - Docker vs. Puppy tradeoff section with comparison table and follow-up CTAs.

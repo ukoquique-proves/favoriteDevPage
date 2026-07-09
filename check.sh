@@ -12,7 +12,7 @@ echo "=== PuppyTeach consistency check ==="
 echo ""
 
 # All HTML files in root
-HTML_FILES=(index.html toolkit.html gracias.html lista-espera-gracias.html curso-1-hardware-secundario.html curso-2-savefiles.html curso-3-pipeline-trixieretro.html)
+HTML_FILES=(index.html toolkit.html gracias.html lista-espera-gracias.html curso-1-loops-compilador.html curso-2-arquitectura-hexagonal.html curso-3-soberania-local.html)
 
 # 1. Every HTML file exists
 echo "[ File existence ]"
@@ -55,6 +55,8 @@ for f in "${HTML_FILES[@]}"; do
     [ "$f" = "index.html" ] && continue
     if grep -q 'puppyteach-waitlist-form' "$f"; then
         fail "$f contains puppyteach-waitlist-form (should only be in index.html)"
+    else
+        pass "$f does not contain puppyteach-waitlist-form"
     fi
 done
 grep -q 'puppyteach-waitlist-form' index.html && pass "index.html contains puppyteach-waitlist-form" || fail "index.html is missing puppyteach-waitlist-form"
@@ -114,7 +116,9 @@ done
 echo
 echo "=== Parser-based HTML check ==="
 if command -v python3 >/dev/null 2>&1; then
-  python3 tools/html_checker.py || exit 1
+  if ! python3 tools/html_checker.py; then
+    ERRORS=$((ERRORS + 1))
+  fi
 fi
 echo ""
 if [ "$ERRORS" -eq 0 ]; then

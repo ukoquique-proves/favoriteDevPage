@@ -1,8 +1,8 @@
-# PuppyTeach | Desarrollo Senior Ultra-Eficiente
+# PuppyTeach | Ingeniería Inusual para IA Segura
 
 🌐 **Sitio en vivo:** [https://ukoquique-proves.github.io/fastDevPage/](https://ukoquique-proves.github.io/fastDevPage/)
 
-Sitio web estático para la Fase 2 de Teledígitos / PuppyTeach. Dirigido a desarrolladores senior que valoran precisión técnica, métricas reales y cero overhead innecesario.
+Sitio web estático para la Fase 2 de Teledígitos / PuppyTeach. Dirigido a equipos que quieren arquitectura determinista, contexto auditable y ejecución local sin perder control sobre el código generado por IA.
 
 ## Filosofía del Proyecto
 
@@ -11,13 +11,13 @@ Construido bajo la mentalidad **"Antihumo"**: HTML/CSS estático, sin frameworks
 ## Estructura del proyecto
 
 ```
-index.html                        # Landing page principal
-toolkit.html                      # Página del toolkit Code Compacter (detalle + formulario)
+index.html                        # Landing page principal con el nuevo posicionamiento
+toolkit.html                      # Página del toolkit extractor de contexto arquitectónico seguro
 gracias.html                      # Página de confirmación post-formulario (fallback no-JS)
 lista-espera-gracias.html         # Confirmación de la lista de espera si el navegador no ejecuta JS
-curso-1-hardware-secundario.html  # Detalle del Curso 1
-curso-2-savefiles.html            # Detalle del Curso 2
-curso-3-pipeline-trixieretro.html # Detalle del Curso 3
+curso-1-loops-compilador.html    # Detalle del Curso 1
+curso-2-arquitectura-hexagonal.html # Detalle del Curso 2
+curso-3-soberania-local.html     # Detalle del Curso 3
 styles.css                        # Hoja de estilos compartida por todas las páginas
 serve.sh                          # Levanta servidor local y abre el browser automáticamente
 check.sh                          # Verifica consistencia del proyecto antes de hacer push
