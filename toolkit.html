@@ -59,24 +59,38 @@ fn main() {
                 <h2 class="lead-magnet__title">Recibe el toolkit gratis</h2>
 
                 <div class="lead-form__card">
-                    <p id="lead-form-description" class="lead-form__intro">Introduce tu email para acceder al toolkit. Al enviar el formulario serás redirigido a la página de descarga y podrás probar el flujo en minutos:</p>
+                    <!-- Success state (hidden until form submits) -->
+                    <div id="form-success" style="display:none;" role="status" aria-live="polite">
+                        <p class="lead-form__intro">✓ ¡Listo! Tu kit está preparado.</p>
+                        <a href="https://github.com/ukoquique-proves/favoriteDevPage/releases/download/v0.1.0/Code_Compacter.tar.gz"
+                            class="btn btn--highlight" download>
+                            ⬇ Descargar Code_Compacter.tar.gz
+                        </a>
+                    </div>
 
-                    <form id="puppyteach-capture-form" class="lead-form" data-formspree-form action="https://formspree.io/f/mnjyeeod" method="POST" aria-describedby="lead-form-description">
-                        <input type="hidden" name="_next" value="https://ukoquique-proves.github.io/favoriteDevPage/gracias.html">
-                        <input type="hidden" name="_subject" value="Descarga Code Compacter - Toolkit PuppyTeach">
-                        <div class="lead-form__field">
-                            <label for="lead-email" class="sr-only">Correo electrónico</label>
-                            <input id="lead-email" type="email" name="email" placeholder="desarrollador@dominio.com"
-                                required class="lead-form__input lead-form__input--full"
-                                aria-describedby="lead-email-help">
+                    <!-- Error state (hidden until error) -->
+                    <div id="form-error" style="display:none;" role="alert" aria-live="assertive">
+                        <p class="lead-form__intro" style="color: var(--error-color);">✕ Ocurrió un error. Por favor, intenta nuevamente.</p>
+                    </div>
 
-              <span id="lead-email-help" class="lead-form__help">Usa un correo válido para continuar.</span>
-                        </div>
-                        <button type="submit" class="btn btn--highlight lead-form__submit">
-                            Enviar Code Compacter de Regalo
-                        </button>
-                    </form>
-                    <p class="lead-form__note"><span aria-hidden="true">🔒</span> Cero spam corporativo. Solo el script y las lecciones técnicas de PuppyTeach.</p>
+                    <!-- Form (hidden after success) -->
+                    <div id="form-wrapper">
+                        <p id="lead-form-description" class="lead-form__intro">Introduce tu email para acceder al toolkit:</p>
+                        <form id="puppyteach-capture-form" class="lead-form" aria-describedby="lead-form-description" novalidate>
+                            <input type="hidden" name="_subject" value="Descarga Code Compacter - Toolkit PuppyTeach">
+                            <div class="lead-form__field">
+                                <label for="lead-email" class="sr-only">Correo electrónico</label>
+                                <input id="lead-email" type="email" name="email" placeholder="desarrollador@dominio.com"
+                                    required class="lead-form__input lead-form__input--full"
+                                    aria-describedby="lead-email-help">
+                                <span id="lead-email-help" class="lead-form__help">Usa un correo válido para continuar.</span>
+                            </div>
+                            <button type="submit" class="btn btn--highlight lead-form__submit">
+                                Enviar Code Compacter de Regalo
+                            </button>
+                        </form>
+                        <p class="lead-form__note"><span aria-hidden="true">🔒</span> Cero spam corporativo. Solo el script y las lecciones técnicas de PuppyTeach.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -85,6 +99,37 @@ fn main() {
     <footer>
         &copy; 2026 PuppyTeach / Teledígitos. Sin humo, solo métricas.
     </footer>
+
+    <script>
+        const form = document.getElementById('puppyteach-capture-form');
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+
+            try {
+                const data = new FormData(form);
+                const res = await fetch('https://formspree.io/f/mnjyeeod', {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (res.ok) {
+                    document.getElementById('form-wrapper').style.display = 'none';
+                    document.getElementById('form-error').style.display = 'none';
+                    document.getElementById('form-success').style.display = 'block';
+                } else {
+                    throw new Error('server error');
+                }
+            } catch {
+                btn.disabled = false;
+                btn.textContent = 'Enviar Code Compacter de Regalo';
+                document.getElementById('form-error').style.display = 'block';
+            }
+        });
+    </script>
 </body>
 
 </html>
