@@ -16,6 +16,8 @@ La hoja se centra ahora en las mejoras pendientes más relevantes para la estrat
 
 ## Flujo del formulario (prioridad: alta)
 
+- [ ] **Whitelistear dominio en Formspree**: en formspree.io → form `mnjyeeod` → Settings → añadir `ukoquique-proves.github.io` a los dominios permitidos. Sin esto el `_next` redirect a `gracias.html` no funciona.
+- [ ] **Subir release `v0.1.0` en `favoriteDevPage`**: crear el release en github.com/ukoquique-proves/favoriteDevPage → Releases → Draft new release → tag `v0.1.0` → subir `Code_Compacter.tar.gz`. Hasta entonces el botón de descarga en `gracias.html` dará 404.
 - [ ] Ejecutar una prueba de extremo a extremo contra el sitio publicado y verificar que Formspree recibe las entradas y que el flujo de éxito llega a la página correcta.
 - [ ] Revisar y estandarizar los CTA del sitio para que describan con precisión su destino y su valor de negocio.
 
