@@ -59,7 +59,7 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
  - Removed confirmation-only pages from `sitemap.xml` to avoid exposing download pages in search results.
 
 ### Published
-- Published the project to GitHub Pages at `https://ukoquique-proves.github.io/fastDevPage/`.
+- Published the project to GitHub Pages at `https://ukoquique-proves.github.io/favoriteDevPage/`.
 
 ## [0.1.0] - 2026-06-19
 - Initial release of the PuppyTeach landing page.

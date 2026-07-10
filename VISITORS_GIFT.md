@@ -10,7 +10,7 @@ El formulario `id="puppyteach-capture-form"` en `toolkit.html` está wired al SD
 Al enviar con éxito, el bloque `data-fs-success` se hace visible mostrando un botón de descarga directa:
 
 ```
-https://github.com/ukoquique-proves/fastDevPage/releases/download/v0.1.0/Code_Compacter.tar.gz
+https://github.com/ukoquique-proves/favoriteDevPage/releases/download/v0.1.0/Code_Compacter.tar.gz
 ```
 
 El visitante descarga el archivo sin salir de la página. Importante: el sitio no envía automáticamente el `.tar.gz` como adjunto de email; el flujo actual ofrece un enlace de descarga directa tras el envío.
@@ -35,7 +35,7 @@ Si publicas una nueva versión del archivo, actualiza la URL del asset en dos lu
 
 La URL sigue el patrón:
 ```
-https://github.com/ukoquique-proves/fastDevPage/releases/download/<tag>/Code_Compacter.tar.gz
+https://github.com/ukoquique-proves/favoriteDevPage/releases/download/<tag>/Code_Compacter.tar.gz
 ```
 
 ## Nota de arquitectura

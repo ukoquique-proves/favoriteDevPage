@@ -1,6 +1,6 @@
 # PuppyTeach | Ingeniería Inusual para IA Segura
 
-🌐 **Sitio en vivo:** [https://ukoquique-proves.github.io/fastDevPage/](https://ukoquique-proves.github.io/fastDevPage/)
+🌐 **Sitio en vivo:** [https://ukoquique-proves.github.io/favoriteDevPage/](https://ukoquique-proves.github.io/favoriteDevPage/)
 
 Sitio web estático para la Fase 2 de Teledígitos / PuppyTeach. Dirigido a equipos que quieren arquitectura determinista, contexto auditable y ejecución local sin perder control sobre el código generado por IA.
 
@@ -41,7 +41,7 @@ Importante: revisa el panel de Formspree para comprobar que el formulario está 
 
 1. En GitHub, ve a **Settings > Pages**.
 2. Selecciona la rama `main` y la carpeta `/ (root)`.
-3. Guarda. El sitio estará en `https://ukoquique-proves.github.io/fastDevPage/`.
+3. Guarda. El sitio estará en `https://ukoquique-proves.github.io/favoriteDevPage/`.
 
 ## Desarrollo local
 
