@@ -12,7 +12,7 @@ echo "=== PuppyTeach consistency check ==="
 echo ""
 
 # All HTML files in root
-HTML_FILES=(index.html toolkit.html gracias.html lista-espera-gracias.html curso-1-loops-compilador.html curso-2-arquitectura-hexagonal.html curso-3-soberania-local.html)
+HTML_FILES=(index.html toolkit.html lista-espera-gracias.html curso-1-loops-compilador.html curso-2-arquitectura-hexagonal.html curso-3-soberania-local.html)
 
 # 1. Every HTML file exists
 echo "[ File existence ]"

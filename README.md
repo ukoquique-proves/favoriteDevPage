@@ -13,7 +13,6 @@ Construido bajo la mentalidad **"Antihumo"**: HTML/CSS estático, sin frameworks
 ```
 index.html                        # Landing page principal con el nuevo posicionamiento
 toolkit.html                      # Página del toolkit extractor de contexto arquitectónico seguro
-gracias.html                      # Página de confirmación post-formulario (fallback no-JS)
 lista-espera-gracias.html         # Confirmación de la lista de espera si el navegador no ejecuta JS
 curso-1-loops-compilador.html    # Detalle del Curso 1
 curso-2-arquitectura-hexagonal.html # Detalle del Curso 2
@@ -33,7 +32,7 @@ Los formularios envían a Formspree (`https://formspree.io/f/mnjyeeod`). Histór
 - Formulario de descarga toolkit: `id="puppyteach-capture-form"` en `toolkit.html`
 - Formulario de lista de espera: `id="puppyteach-waitlist-form"` en `index.html`
 - Feedback inline con `data-fs-success` / `data-fs-error` cuando el navegador procesa la respuesta.
-- Fallback no-JS: `gracias.html` para el toolkit y `lista-espera-gracias.html` para la lista de espera (estas páginas están intencionadamente excluidas de `sitemap.xml`).
+- Fallback no-JS: `lista-espera-gracias.html` para la lista de espera (esta página está intencionadamente excluida de `sitemap.xml`).
 
 Importante: revisa el panel de Formspree para comprobar que el formulario está activo y que las notificaciones están configuradas correctamente.
 
