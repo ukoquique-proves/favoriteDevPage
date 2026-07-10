@@ -4,42 +4,53 @@
 
 ### Symptom
 
-Submitting the toolkit gift form appears to succeed from the UI, but the user does not receive the expected confirmation message and does not receive the gift.
+Submitting the toolkit form from the live site sends an email to the form owner but the user is not redirected to `gracias.html` and receives no download link.
 
-### What is currently known
+### Root cause (resolved)
 
-- The site uses a static HTML form that posts to Formspree.
-- The page includes a redirect target for the success/fallback flow.
-- The direct gift download is currently linked from the success page, not from Formspree itself.
-- The previous client-side Formspree SDK approach was not reliable in this setup, so the form was switched to the standard browser submission path.
-- The repository still needs a real end-to-end verification of the live published form flow.
+The release asset `Code_Compacter.tar.gz` did not exist on the `favoriteDevPage` repo. The download URL in `gracias.html` was returning 404. This has been fixed — the release `v0.1.0` is now published at:
 
-### Likely causes to investigate
+```
+https://github.com/ukoquique-proves/favoriteDevPage/releases/download/v0.1.0/Code_Compacter.tar.gz
+```
 
-1. Formspree endpoint configuration
-   - The form may be posting to the right endpoint, but the Formspree form must be configured correctly in the Formspree dashboard.
-   - If the form is not active, not receiving submissions, or missing the expected endpoint settings, the submission may appear to fail silently.
+### How the redirect works (free Formspree plan)
 
-2. Redirect/success page flow
-   - The current flow depends on the browser reaching the success page after Formspree accepts the submission.
-   - If the redirect is blocked, not followed, or the success page is not being served as expected, the user will not see the gift link.
+The free Formspree plan does not allow configuring a redirect URL from the dashboard — that's a paid feature. However, Formspree does honor a `_next` hidden field in the form HTML:
 
-3. Delivery mechanism mismatch
-   - The gift is not being delivered by Formspree itself.
-   - The current design expects the success page to present a direct download link after the form submission flow completes.
-   - If the submission is not completing that path, the user will not receive the gift through this mechanism.
+```html
+<input type="hidden" name="_next" value="https://ukoquique-proves.github.io/favoriteDevPage/gracias.html">
+```
 
-4. Live deployment vs local behavior
-   - Local testing does not guarantee the published GitHub Pages deployment is behaving the same way.
-   - The form must be tested against the live URL, not only the local preview.
+Formspree auto-whitelists the submitting domain on first use. This means:
 
-### Recommended next steps
+- The first submission from `ukoquique-proves.github.io` triggers the auto-whitelist.
+- After that, every submission from that domain will redirect to `gracias.html` automatically.
+- No dashboard configuration is required.
 
-- Test the live form from the published site and confirm whether the browser reaches the success page.
-- Check the Formspree dashboard for incoming submissions and any error notifications.
-- Verify whether the success page is reachable and whether the download link is present.
-- If needed, replace the current redirect-based flow with a more deterministic delivery mechanism such as a direct email delivery action or a backend endpoint.
+### Current form code (toolkit.html)
 
-### Notes
+The form tag and hidden fields are correctly set:
 
-This document is intentionally explicit about the current uncertainty. The goal is to preserve the investigation trail while the form delivery issue is being debugged.
+```html
+<form action="https://formspree.io/f/mnjyeeod" method="POST">
+    <input type="hidden" name="_next" value="https://ukoquique-proves.github.io/favoriteDevPage/gracias.html">
+    <input type="hidden" name="_subject" value="Descarga Code Compacter - Toolkit PuppyTeach">
+```
+
+### Current delivery flow
+
+1. User submits email on `toolkit.html`
+2. Formspree receives the submission and notifies the form owner
+3. Browser is redirected to `gracias.html`
+4. User sees a download button linking directly to the GitHub release asset
+5. User downloads `Code_Compacter.tar.gz`
+
+No autoresponder or email delivery to the user is involved — the download happens inline on `gracias.html`.
+
+### If the redirect stops working
+
+- Check that the form is being submitted from `ukoquique-proves.github.io` (not localhost)
+- Confirm the `_next` value in `toolkit.html` matches the live URL exactly
+- Check the Formspree dashboard for the form `mnjyeeod` for any error notifications
+- If the domain whitelist gets reset, the first submission from the live domain will re-trigger it automatically
