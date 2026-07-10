@@ -30,7 +30,7 @@ class SimpleHTMLInspector(HTMLParser):
 
 def inspect_file(path:Path):
     content = path.read_text(encoding='utf-8')
-    require_main = path.name not in {"gracias.html", "lista-espera-gracias.html"}
+    require_main = path.name not in {"lista-espera-gracias.html"}
     parser = SimpleHTMLInspector(require_main=require_main)
     try:
         parser.feed(content)

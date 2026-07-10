@@ -20,12 +20,11 @@ for f in "${HTML_FILES[@]}"; do
     [ -f "$f" ] && pass "$f exists" || fail "$f is missing"
 done
 
-# 2. Every HTML file (except gracias.html) links back to index.html
+# 2. Every HTML file links back to index.html
 echo ""
 echo "[ Header nav links back to index.html ]"
 for f in "${HTML_FILES[@]}"; do
     [ "$f" = "index.html" ] && continue
-    [ "$f" = "gracias.html" ] && continue
     grep -q 'href="index.html"' "$f" && pass "$f" || fail "$f missing href=\"index.html\" in nav"
 done
 

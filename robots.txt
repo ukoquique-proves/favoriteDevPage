@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ukoquique-proves.github.io/fastDevPage/sitemap.xml
+Sitemap: https://ukoquique-proves.github.io/favoriteDevPage/sitemap.xml

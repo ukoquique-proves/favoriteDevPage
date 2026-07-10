@@ -25,14 +25,10 @@ push.sh                           # Ejecuta check.sh y sube los cambios a GitHub
 
 ## Formulario integrado con Formspree
 
-Los formularios envían a Formspree (`https://formspree.io/f/mnjyeeod`). Históricamente se intentó una integración AJAX con el SDK de Formspree, pero esa vía resultó poco fiable para la entrega del toolkit en este sitio estático. Actualmente el flujo recomendado es:
+Los formularios envían a Formspree (`https://formspree.io/f/mnjyeeod`):
 
-- El formulario se envía mediante el flujo estándar del navegador (POST) hacia Formspree.
-- `forms.js` se encarga de fijar el `action` de los formularios al endpoint configurado como mejora progresiva.
-- Formulario de descarga toolkit: `id="puppyteach-capture-form"` en `toolkit.html`
+- Formulario de descarga toolkit: `id="puppyteach-capture-form"` en `toolkit.html` — usa `fetch()` AJAX. Al enviar con éxito muestra el botón de descarga inline sin redirigir la página.
 - Formulario de lista de espera: `id="puppyteach-waitlist-form"` en `index.html`
-- Feedback inline con `data-fs-success` / `data-fs-error` cuando el navegador procesa la respuesta.
-- Fallback no-JS: `lista-espera-gracias.html` para la lista de espera (esta página está intencionadamente excluida de `sitemap.xml`).
 
 Importante: revisa el panel de Formspree para comprobar que el formulario está activo y que las notificaciones están configuradas correctamente.
 
