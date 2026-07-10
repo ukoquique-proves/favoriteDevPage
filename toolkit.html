@@ -121,6 +121,8 @@ fn main() {
                     document.getElementById('form-error').style.display = 'none';
                     document.getElementById('form-success').style.display = 'block';
                 } else {
+                    const body = await res.json().catch(() => ({}));
+                    console.error('Formspree error', res.status, body);
                     throw new Error('server error');
                 }
             } catch {
