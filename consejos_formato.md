@@ -45,3 +45,15 @@ Al momento de pedir el correo para entregar Code_Compacter.tar.gz (el Extractor 
 🎨 Sugerencia de Estilo CSS para tu index.html
 
 Para que visualmente sea agradable sin ser pesado, una combinación de fondo oscuro (#121214), texto principal celeste terminal o blanco suave, y acentos naranja cálido (como el de la imagen de preview que generamos) le dará un aspecto moderno, limpio y profesional.
+
+---
+
+## Convención CSS
+
+El proyecto usa **BEM** para nombrar clases CSS:
+
+- Bloque: `lead-magnet`, `lead-form`, `course-card`
+- Elemento: `lead-magnet__title`, `lead-form__input`, `course-card__cta`
+- Modificador: `btn--highlight`, `btn--secondary`, `lead-form__input--full`
+
+Las clases de utilidad y componentes globales (`btn`, `sr-only`, `badge`, `banner`) usan guion simple sin BEM por ser agnósticas de bloque.
