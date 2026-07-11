@@ -38,9 +38,9 @@ Al explicar el temario de tus 3 cursos, usa analogías ingeniosas. Por ejemplo, 
 
 4. El Regalo (Lead Magnet) con un Toque Colegial
 
-Al momento de pedir el correo para entregar el script install_deps.sh o la documentación de trinchera, hazlo ligero:
+Al momento de pedir el correo para entregar Code_Compacter.tar.gz (el Extractor de Contexto Arquitectónico Seguro), hazlo ligero:
 
-    "Introduce tu email para clonar el script de optimización base. Prometemos no enviarte newsletters semanales escritas por una IA corporativa entusiasta. Solo código y métricas crudas."
+    "Introduce tu email para acceder al toolkit. Prometemos no enviarte newsletters semanales escritas por una IA corporativa entusiasta. Solo código y métricas crudas."
 
 🎨 Sugerencia de Estilo CSS para tu index.html
 
