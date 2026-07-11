@@ -282,8 +282,7 @@ section {
     border-color: var(--accent-color);
 }
 
-.btn--highlight,
-.btn-highlight {
+.btn--highlight {
     background: #ffaa00;
     color: #000;
     font-weight: bold;
@@ -293,8 +292,7 @@ section {
     transition: 0.2s;
 }
 
-.btn--highlight:hover,
-.btn-highlight:hover {
+.btn--highlight:hover {
     background: #e69f00;
 }
 
@@ -330,8 +328,7 @@ section {
     height: 46px;
 }
 
-.btn--fixed-height,
-.btn-fixed-height {
+.btn--fixed-height {
     margin-top: 0;
     height: 46px;
     padding: 0 1.5rem;
@@ -349,13 +346,6 @@ section {
     color: #9ca3af;
     font-size: 0.8rem;
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-}
-
-.lead-form__error {
-    color: #ffb347;
-    font-size: 0.8rem;
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    min-height: 1.2rem;
 }
 
 .lead-form__submit {
