@@ -30,9 +30,9 @@ done
 
 # 3. Every HTML file references styles.css and favicon.svg
 echo ""
-echo "[ styles.css and favicon.svg referenced ]"
+echo "[ base.css and favicon.svg referenced ]"
 for f in "${HTML_FILES[@]}"; do
-    grep -q 'styles.css' "$f" && pass "$f → styles.css" || fail "$f missing styles.css"
+    grep -q 'base.css' "$f" && pass "$f → base.css" || fail "$f missing base.css"
     grep -q 'favicon.svg' "$f" && pass "$f → favicon.svg" || fail "$f missing favicon.svg"
 done
 

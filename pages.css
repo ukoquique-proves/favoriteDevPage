@@ -1,0 +1,173 @@
+/* ============================================================
+   pages.css — page-specific layout sections:
+   hero, lead-magnet, inscripciones, tradeoff table, cta
+   ============================================================ */
+
+/* --- Hero --- */
+
+.hero {
+    text-align: left;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #8b949e;
+}
+
+.hero__cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+/* --- Courses section heading --- */
+
+#cursos > h2 {
+    color: #39ff14;
+}
+
+/* --- CTA section --- */
+
+.cta {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* --- Lead magnet section --- */
+
+.lead-magnet {
+    background: #111827;
+    border: 1px solid #ffaa0044;
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    margin-top: 3rem;
+}
+
+.lead-magnet__inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.eyebrow {
+    display: inline-block;
+    background: #ffaa00;
+    color: #000;
+    padding: 0.2rem 0.6rem;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.lead-magnet__title {
+    color: #fff;
+    margin-top: 1rem;
+}
+
+.lead-magnet__copy {
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    color: #e5e7eb;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.9rem;
+}
+
+.feature-accent {
+    color: #ffaa00;
+}
+
+/* --- Inscripciones section --- */
+
+.inscripciones-section {
+    margin-top: 6rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--secondary-color);
+}
+
+.inscripciones-intro {
+    color: #8b949e;
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+/* --- Tradeoff section --- */
+
+.tradeoff-section {
+    margin-top: 6rem;
+    padding: 2rem 0;
+    border-top: 2px solid var(--secondary-color);
+}
+
+.tradeoff-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.tradeoff-subtitle {
+    color: #8b949e;
+    margin-bottom: 2rem;
+}
+
+.tradeoff-intro {
+    background-color: var(--code-bg);
+    padding: 1.5rem;
+    border-radius: 6px;
+    border-left: 3px solid var(--accent-color);
+    margin-bottom: 2rem;
+    color: #8b949e;
+    line-height: 1.8;
+}
+
+.comparison-table-wrapper {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.comparison-table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    background-color: var(--code-bg);
+    border: 1px solid var(--secondary-color);
+    border-radius: 6px;
+    overflow: hidden;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.95rem;
+}
+
+.comparison-table th {
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.comparison-table td {
+    padding: 1rem;
+    border-top: 1px solid var(--secondary-color);
+    color: #c9d1d9;
+}
+
+.tradeoff-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}

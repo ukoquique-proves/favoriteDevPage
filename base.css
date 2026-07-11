@@ -1,0 +1,125 @@
+/* ============================================================
+   base.css — CSS custom properties, reset, typography,
+   global layout elements (body, header, main, section, footer)
+   ============================================================ */
+
+:root {
+    --bg-color: #0d1117;
+    --text-color: #c9d1d9;
+    --accent-color: #58a6ff;
+    --secondary-color: #30363d;
+    --code-bg: #161b22;
+    --success: #238636;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+section {
+    margin-bottom: 4rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.header-links {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.9rem;
+}
+
+.header-link {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 1.5rem;
+}
+
+.header-link:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.header-link-accent {
+    color: var(--accent-color);
+}
+
+.brand-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-120%);
+    background: var(--accent-color);
+    color: black;
+    padding: 0.75rem 1rem;
+    z-index: 1000;
+    border-bottom-right-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.skip-link:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid var(--text-color);
+    outline-offset: 2px;
+}
+
+.page-centered main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    text-align: center;
+}
+
+@media (max-width: 640px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
