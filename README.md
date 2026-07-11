@@ -11,16 +11,38 @@ Construido bajo la mentalidad **"Antihumo"**: HTML/CSS estático, sin frameworks
 ## Estructura del proyecto
 
 ```
-index.html                        # Landing page principal con el nuevo posicionamiento
-toolkit.html                      # Página del toolkit extractor de contexto arquitectónico seguro
-lista-espera-gracias.html         # Confirmación de la lista de espera si el navegador no ejecuta JS
-curso-1-loops-compilador.html    # Detalle del Curso 1
-curso-2-arquitectura-hexagonal.html # Detalle del Curso 2
-curso-3-soberania-local.html     # Detalle del Curso 3
-styles.css                        # Hoja de estilos compartida por todas las páginas
-serve.sh                          # Levanta servidor local y abre el browser automáticamente
-check.sh                          # Verifica consistencia del proyecto antes de hacer push
-push.sh                           # Ejecuta check.sh y sube los cambios a GitHub
+# Páginas
+index.html                           # Landing page principal
+toolkit.html                         # Toolkit Code Compacter: detalle, formulario y descarga inline
+lista-espera-gracias.html            # Confirmación de lista de espera (fallback no-JS)
+curso-1-loops-compilador.html        # Detalle del Curso 1
+curso-2-arquitectura-hexagonal.html  # Detalle del Curso 2
+curso-3-soberania-local.html         # Detalle del Curso 3
+
+# Estilos y assets
+styles.css                           # Hoja de estilos compartida por todas las páginas
+favicon.svg                          # Favicon del sitio
+robots.txt                           # Directivas para crawlers
+sitemap.xml                          # Mapa del sitio para SEO
+
+# Scripts
+serve.sh                             # Levanta servidor local y abre el browser automáticamente
+check.sh                             # Verifica consistencia del proyecto antes de hacer push
+push.sh                              # Ejecuta check.sh y sube los cambios a GitHub
+tools/html_checker.py                # Validador HTML estructural usado por check.sh
+
+# Documentación
+README.md                            # Este archivo
+CHANGELOG.md                         # Historial de cambios
+ROADMAP.md                           # Tareas pendientes y dirección del producto
+TROUBLESHOOTING.md                   # Diagnóstico de problemas conocidos
+VISITORS_GIFT.md                     # Guía del flujo de entrega del toolkit
+consejos_formato.md                  # Guía de estilo de copy para el sitio
+
+# Configuración
+.env                                 # Credenciales locales (gitignored)
+.env.example                         # Plantilla de variables de entorno
+.gitignore                           # Archivos excluidos del repositorio
 ```
 
 ## Formulario integrado con Formspree
