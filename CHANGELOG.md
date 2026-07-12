@@ -26,6 +26,7 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - All internal links previously pointing to `#lead-magnet` now point to `toolkit.html`.
 - Course cards are fully clickable links navigating to their respective detail pages.
 - Extracted reusable `styles.css` shared across all pages.
+- `styles.css` split into `base.css`, `components.css`, and `pages.css`. All HTML pages updated to reference the three files. CSS convention (BEM) documented in `consejos_formato.md`.
 - Course card titles and "Catálogo de Cursos" heading use neon green (`#39ff14`).
 - All scripts use `$DIR` resolution instead of hardcoded absolute paths.
 - `push.sh` sources `.env` for `GITHUB_TOKEN` and `GITHUB_REPO`.

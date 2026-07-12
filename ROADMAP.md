@@ -30,7 +30,7 @@ La hoja se centra ahora en las mejoras pendientes más relevantes para la estrat
 
 - [ ] Sustituir las comprobaciones frágiles basadas en `grep` por una validación basada en un parser HTML.
 - [ ] Mejorar el checker para validar estructura, enlaces, anclas y ubicación de formularios con mayor robustez frente a cambios de formato HTML.
-- [ ] Dividir `styles.css` en módulos más pequeños (`base.css`, `layout.css`, `forms.css`, `buttons.css`, `hero.css`, `cards.css`, `tradeoff.css`, `utilities.css`).
+- [x] Dividir `styles.css` en módulos más pequeños — hecho: `base.css` (variables, reset, tipografía, layout global), `components.css` (botones, formularios, tarjetas, badges, banner, benchmark), `pages.css` (hero, lead-magnet, inscripciones, tradeoff, cta).
 - [ ] Reducir la duplicación de header/footer mediante plantillas, un paso de build o un generador estático ligero.
 
 ## Lanzamiento y distribución
