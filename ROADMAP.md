@@ -1,7 +1,5 @@
 # ROADMAP
 
-# ROADMAP
-
 ## Estado actual
 
 La hoja se centra ahora en las mejoras pendientes más relevantes para la estrategia de producto y el mantenimiento del sitio.
@@ -17,7 +15,7 @@ La hoja se centra ahora en las mejoras pendientes más relevantes para la estrat
 ## Flujo del formulario (prioridad: alta)
 
 - [x] **Whitelistear dominio en Formspree**: en formspree.io → form `mnjyeeod` → Settings → añadir `ukoquique-proves.github.io` a los dominios permitidos. Sin esto el `fetch()` en `toolkit.html` recibirá un 403 y el bloque `#form-success` no aparecerá.
-- [x] **Subir release `v0.1.0` en `favoriteDevPage`**: crear el release en github.com/ukoquique-proves/favoriteDevPage → Releases → Draft new release → tag `v0.1.0` → subir `Code_Compacter.tar.gz`. Hasta entonces el botón de descarga en el bloque `#form-success` de `toolkit.html` dará 404.
+- [x] **Subir release `v0.1.0` en `favoriteDevPage`**: release creado en github.com/ukoquique-proves/favoriteDevPage → tag `v0.1.0` con `Code_Compacter.tar.gz`.
 - [ ] Ejecutar una prueba de extremo a extremo contra el sitio publicado y verificar que Formspree recibe las entradas y que el flujo de éxito llega a la página correcta.
 - [ ] Revisar y estandarizar los CTA del sitio para que describan con precisión su destino y su valor de negocio.
 

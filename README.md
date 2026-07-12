@@ -20,7 +20,9 @@ curso-2-arquitectura-hexagonal.html  # Detalle del Curso 2
 curso-3-soberania-local.html         # Detalle del Curso 3
 
 # Estilos y assets
-styles.css                           # Hoja de estilos compartida por todas las páginas
+base.css                             # Reset, variables y estilos base compartidos
+components.css                       # Estilos de componentes reutilizables (botones, formularios, tarjetas)
+pages.css                            # Estilos específicos de secciones/páginas concretas
 favicon.svg                          # Favicon del sitio
 robots.txt                           # Directivas para crawlers
 sitemap.xml                          # Mapa del sitio para SEO
