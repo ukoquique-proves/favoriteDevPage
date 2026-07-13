@@ -95,7 +95,7 @@
 /* --- Inscripciones section --- */
 
 .inscripciones-section {
-    margin-top: 6rem;
+    margin-top: 3rem;
     padding-top: 2rem;
     border-top: 1px solid var(--secondary-color);
 }
@@ -109,7 +109,7 @@
 /* --- Tradeoff section --- */
 
 .tradeoff-section {
-    margin-top: 6rem;
+    margin-top: 3rem;
     padding: 2rem 0;
     border-top: 2px solid var(--secondary-color);
 }

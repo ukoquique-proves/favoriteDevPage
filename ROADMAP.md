@@ -15,7 +15,7 @@ La hoja se centra ahora en las mejoras pendientes más relevantes para la estrat
 ## Flujo del formulario (prioridad: alta)
 
 - [x] **Whitelistear dominio en Formspree**: en formspree.io → form `mnjyeeod` → Settings → añadir `ukoquique-proves.github.io` a los dominios permitidos. Sin esto el `fetch()` en `toolkit.html` recibirá un 403 y el bloque `#form-success` no aparecerá.
-- [x] **Subir release `v0.1.0` en `favoriteDevPage`**: release creado en github.com/ukoquique-proves/favoriteDevPage → tag `v0.1.0` con `Code_Compacter.tar.gz`.
+- [x] **Subir release `v0.1.0` en `favoriteDevPage`**: release creado en github.com/ukoquique-proves/favoriteDevPage → tag `v0.1.0` con el asset `ops-core`.
 - [ ] Ejecutar una prueba de extremo a extremo contra el sitio publicado y verificar que Formspree recibe las entradas y que el flujo de éxito llega a la página correcta.
 - [ ] Revisar y estandarizar los CTA del sitio para que describan con precisión su destino y su valor de negocio.
 
@@ -35,3 +35,14 @@ La hoja se centra ahora en las mejoras pendientes más relevantes para la estrat
 
 - [ ] Publicar el outreach inicial en Dev.to o Reddit para ampliar alcance y captar interés.
 - [ ] Preparar una checklist breve de release para futuras actualizaciones en GitHub Pages.
+
+### Observaciones operativas (desde `OBSERVACIONES.md`)
+
+- [ ] **INTEG** Catalogar `SimpleHTMLInspector` como recurso de infraestructura invocable por `ops-core`:
+	- Añadir o exponer un `check.sh` en el repo que llame a `SimpleHTMLInspector`.
+	- Documentar en `README.md` del sitio cómo `ops-core` debe invocar ese `check.sh`.
+	- **Aceptación:** `ops-core` puede invocar el check y recibe un código de salida claro.
+
+- [ ] **FIX** Hacer el enlace de descarga del Toolkit dinámico:
+	- Reemplazar la URL hardcodeada del asset por una variable o plantilla que apunte al release correcto (o documentar el paso de actualización del link en la checklist de release).
+	- **Aceptación:** El botón de descarga apunta al asset publicado en Releases y no a una ruta stale.

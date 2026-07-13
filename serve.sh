@@ -2,6 +2,14 @@
 DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$DIR"
 
+# Build the site first
+echo "Building the site..."
+bash build.sh
+if [ $? -ne 0 ]; then
+    echo "Build failed. Aborting server start."
+    exit 1
+fi
+
 cleanup() {
     if [ -n "$SERVER_PID" ] && kill -0 "$SERVER_PID" > /dev/null 2>&1; then
         kill "$SERVER_PID" > /dev/null 2>&1

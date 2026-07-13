@@ -19,6 +19,14 @@ if [ -z "$BRANCH" ] || [ "$BRANCH" = "HEAD" ]; then
     exit 1
 fi
 
+# Build the site first
+echo "Building the site..."
+bash build.sh
+if [ $? -ne 0 ]; then
+    echo "Build failed. Aborting push."
+    exit 1
+fi
+
 echo "Running consistency checks before push..."
 bash check.sh
 if [ $? -ne 0 ]; then

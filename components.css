@@ -270,3 +270,140 @@
         gap: 0.5rem;
     }
 }
+
+/* --- Pilares Section --- */
+.pilares-section {
+    padding: 1.5rem 0;
+}
+
+.pilares-intro {
+    color: #e5e7eb;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+}
+
+.pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.pilar-card {
+    background-color: var(--code-bg);
+    padding: 1.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--secondary-color);
+    transition: border-color 0.2s;
+}
+
+.pilar-card:hover {
+    border-color: var(--accent-color);
+}
+
+.pilar-card h3 {
+    margin-top: 0;
+    color: #39ff14;
+}
+
+/* --- Servicios Section --- */
+.servicios-section {
+    padding: 1.5rem 0;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.servicio-card {
+    background-color: var(--code-bg);
+    padding: 1.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--secondary-color);
+    transition: border-color 0.2s;
+}
+
+.servicio-card:hover {
+    border-color: var(--accent-color);
+}
+
+.servicio-card h3 {
+    margin-top: 0;
+    color: #39ff14;
+}
+
+.servicio-card strong {
+    color: #e5e7eb;
+}
+
+/* --- Ética Section --- */
+.etica-section {
+    padding: 1.5rem 0;
+}
+
+.etica-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.etica-item {
+    background-color: rgba(255, 170, 0, 0.05);
+    border: 1px solid #ffaa0044;
+    padding: 1.75rem;
+    border-radius: 6px;
+}
+
+.etica-item h4 {
+    margin-top: 0;
+    color: #ffaa00;
+}
+
+/* --- Lead Magnet Extra --- */
+.lead-magnet-desc {
+    color: #e5e7eb;
+    margin: 1rem 0 1.5rem 0;
+}
+
+/* --- Colabora Section --- */
+.colabora-section {
+    padding: 1.5rem 0;
+    border-top: 2px solid var(--secondary-color);
+}
+
+.colabora-subtitle {
+    color: #8b949e;
+    margin-bottom: 2rem;
+}
+
+.colabora-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.colabora-card {
+    background-color: var(--code-bg);
+    padding: 1.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--secondary-color);
+    transition: border-color 0.2s;
+}
+
+.colabora-card:hover {
+    border-color: var(--accent-color);
+}
+
+.colabora-card h3 {
+    margin-top: 0;
+    color: var(--accent-color);
+}
+
+.colabora-condicion {
+    color: #8b949e;
+    font-size: 0.95rem;
+    border-left: 3px solid var(--secondary-color);
+    padding-left: 0.75rem;
+    margin: 1rem 0;
+}

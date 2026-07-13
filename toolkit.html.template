@@ -64,7 +64,7 @@ fn main() {
                     <!-- Success state (hidden until form submits) -->
                     <div id="form-success" style="display:none;" role="status" aria-live="polite">
                         <p class="lead-form__intro">✓ ¡Listo! Tu kit está preparado.</p>
-                        <a href="https://github.com/ukoquique-proves/favoriteDevPage/releases/download/v0.1.0/ops-core"
+                        <a href="{{TOOLKIT_DOWNLOAD_URL}}"
                             class="btn btn--highlight" download>
                             ⬇ Descargar ops-core
                         </a>

@@ -7,7 +7,7 @@ El formulario `id="puppyteach-capture-form"` en `toolkit.html` usa `fetch()` con
 Al enviar con éxito, el bloque `#form-success` se hace visible mostrando el botón de descarga directa:
 
 ```
-https://github.com/ukoquique-proves/favoriteDevPage/releases/download/v0.1.0/Code_Compacter.tar.gz
+https://github.com/ukoquique-proves/favoriteDevPage/releases/download/v0.1.0/ops-core
 ```
 
 El formulario también muestra un enlace a la lista de espera de la cohorte de Octubre 2026.
@@ -23,7 +23,7 @@ El formulario también muestra un enlace a la lista de espera de la cohorte de O
 Si publicas una nueva versión del archivo, actualiza la URL del asset en el bloque `#form-success` dentro de `toolkit.html`:
 
 ```
-https://github.com/ukoquique-proves/favoriteDevPage/releases/download/<tag>/Code_Compacter.tar.gz
+https://github.com/ukoquique-proves/favoriteDevPage/releases/download/<tag>/ops-core
 ```
 
 ## Configuración de Formspree
