@@ -2,50 +2,11 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teledígitos | Arquitectura determinista para detener la deuda técnica</title>
-    <meta name="description" content="Arquitectura de Software enfocada en soberanía tecnológica, control riguroso y reducción de deuda técnica en entornos de IA.">
-    <meta name="author" content="Quique Uko">
-    <meta name="theme-color" content="#0d1117">
-    
-    <link rel="canonical" href="https://ukoquique-proves.github.io/favoriteDevPage/">
-    
-    <meta property="og:title" content="Teledígitos | Arquitectura determinista para detener la deuda técnica">
-    <meta property="og:description" content="Arquitectura de Software enfocada en soberanía tecnológica, control riguroso y reducción de deuda técnica en entornos de IA.">
-    <meta property="og:url" content="https://ukoquique-proves.github.io/favoriteDevPage/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://ukoquique-proves.github.io/favoriteDevPage/social-share.png">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Teledígitos | Arquitectura determinista para detener la deuda técnica">
-    <meta name="twitter:description" content="Arquitectura de Software enfocada en soberanía tecnológica, control riguroso y reducción de deuda técnica en entornos de IA.">
-    <meta name="twitter:image" content="https://ukoquique-proves.github.io/favoriteDevPage/social-share.png">
-    
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="shortcut icon" href="favicon.svg">
-    <link rel="stylesheet" href="base.css">
-    <link rel="stylesheet" href="components.css">
-    <link rel="stylesheet" href="pages.css">
-
+{{HEAD}}
 </head>
 
 <body>
-        <a class="skip-link" href="#main-content">Saltar al contenido</a>
-
-    <header>
-        <nav>
-            <a href="index.html" class="brand-link"><strong>Teledígitos</strong> / Arquitectura de Software</a>
-        </nav>
-        <div class="header-links">
-            <a href="index.html#inscripciones" class="header-link">[ Cursos ]</a>
-            <a href="index.html#colabora" class="header-link">[ Colabora ]</a>
-            <a href="https://ukoquique-proves.github.io/TeledigitosWeb/" class="header-link" target="_blank"
-                rel="noopener noreferrer">[ Sobre Mi ]</a>
-            <a href="toolkit.html" class="header-link header-link-accent">[ Toolkit_Gratis ]</a>
-        </div>
-    </header>
-
+    {{HEADER}}
 
     <main id="main-content">
         <section class="hero">
@@ -308,10 +269,7 @@
         </section>
     </main>
 
-        <footer>
-        &copy; 2026 Teledígitos. Sin humo, solo métricas.
-    </footer>
-
+    {{FOOTER}}
 
 </body>
 

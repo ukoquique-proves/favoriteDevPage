@@ -20,54 +20,14 @@ for f in "${HTML_FILES[@]}"; do
     [ -f "$f" ] && pass "$f exists" || fail "$f is missing"
 done
 
-# 2. Every HTML file links back to index.html
-echo ""
-echo "[ Header nav links back to index.html ]"
-for f in "${HTML_FILES[@]}"; do
-    [ "$f" = "index.html" ] && continue
-    grep -q 'href="index.html"' "$f" && pass "$f" || fail "$f missing href=\"index.html\" in nav"
-done
-
-# 3. Every HTML file references styles.css and favicon.svg
-echo ""
-echo "[ base.css and favicon.svg referenced ]"
-for f in "${HTML_FILES[@]}"; do
-    grep -q 'base.css' "$f" && pass "$f → base.css" || fail "$f missing base.css"
-    grep -q 'favicon.svg' "$f" && pass "$f → favicon.svg" || fail "$f missing favicon.svg"
-done
-
-# 4. puppyteach-capture-form only in toolkit.html
-echo ""
-echo "[ Form placement ]"
-for f in "${HTML_FILES[@]}"; do
-    [ "$f" = "toolkit.html" ] && continue
-    if grep -q 'puppyteach-capture-form' "$f"; then
-        fail "$f contains puppyteach-capture-form (should only be in toolkit.html)"
-    else
-        pass "$f does not contain puppyteach-capture-form"
-    fi
-done
-grep -q 'puppyteach-capture-form' toolkit.html && pass "toolkit.html contains puppyteach-capture-form" || fail "toolkit.html is missing puppyteach-capture-form"
-
-# 5. puppyteach-waitlist-form only in index.html
-for f in "${HTML_FILES[@]}"; do
-    [ "$f" = "index.html" ] && continue
-    if grep -q 'puppyteach-waitlist-form' "$f"; then
-        fail "$f contains puppyteach-waitlist-form (should only be in index.html)"
-    else
-        pass "$f does not contain puppyteach-waitlist-form"
-    fi
-done
-grep -q 'puppyteach-waitlist-form' index.html && pass "index.html contains puppyteach-waitlist-form" || fail "index.html is missing puppyteach-waitlist-form"
-
-# 6. Every HTML file listed in README.md
+# 2. Every HTML file listed in README.md
 echo ""
 echo "[ HTML files listed in README.md ]"
 for f in "${HTML_FILES[@]}"; do
     grep -q "$f" README.md && pass "$f listed in README.md" || fail "$f not listed in README.md"
 done
 
-# 7. No unfilled placeholders in docs
+# 3. No unfilled placeholders in docs
 echo ""
 echo "[ No unfilled placeholders ]"
 for doc in README.md CHANGELOG.md VISITORS_GIFT.md; do
@@ -78,46 +38,14 @@ for doc in README.md CHANGELOG.md VISITORS_GIFT.md; do
     fi
 done
 
-# 8. Every HTML file has a footer
-echo ""
-echo "[ Footer presence ]"
-for f in "${HTML_FILES[@]}"; do
-    grep -q '<footer>' "$f" && pass "$f has footer" || fail "$f is missing footer"
-done
-
-# 9. Internal href links — verify file exists AND anchor fragment exists on target page
-echo ""
-echo "[ Internal link integrity ]"
-for f in "${HTML_FILES[@]}"; do
-    while IFS= read -r href; do
-        target="${href%%#*}"
-        anchor="${href##*#}"
-        # if no fragment, anchor == href (no # present); normalize
-        [ "$anchor" = "$href" ] && anchor=""
-
-        [ -z "$target" ] && continue
-        if [ ! -f "$target" ]; then
-            fail "$f links to missing file: $target"
-            continue
-        fi
-        pass "$f → $target"
-
-        if [ -n "$anchor" ]; then
-            if grep -qP "id=\"${anchor}\"" "$target"; then
-                pass "$f → $target#$anchor (anchor exists)"
-            else
-                fail "$f → $target#$anchor (anchor '#$anchor' not found in $target)"
-            fi
-        fi
-    done < <(grep -oP 'href="\K[^"]+' "$f" | grep '\.html')
-done
-
 echo
 echo "=== Parser-based HTML check ==="
 if command -v python3 >/dev/null 2>&1; then
   if ! python3 tools/html_checker.py; then
     ERRORS=$((ERRORS + 1))
   fi
+else
+  echo "python3 not found. Skipping robust HTML checks."
 fi
 echo ""
 if [ "$ERRORS" -eq 0 ]; then

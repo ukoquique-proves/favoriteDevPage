@@ -6,11 +6,11 @@ La hoja se centra ahora en las mejoras pendientes más relevantes para la estrat
 
 ## Posicionamiento y narrativa (prioridad: alta)
 
-- [ ] Reescribir el hero para pasar de una propuesta centrada en hardware/ram a una narrativa de control arquitectónico, determinismo y reducción de deuda técnica generada por IA.
-- [ ] Rediseñar el catálogo de cursos/workshops para que refleje los tres ejes del orquestador propuesto: loops cerrados con compilador, Arquitectura Hexagonal y DDD, y soberanía tecnológica/ejecución local.
+- [x] Reescribir el hero para pasar de una propuesta centrada en hardware/ram a una narrativa de control arquitectónico, determinismo y reducción de deuda técnica generada por IA.
+- [x] Rediseñar el catálogo de cursos/workshops para que refleje los tres ejes del orquestador propuesto: loops cerrados con compilador, Arquitectura Hexagonal y DDD, y soberanía tecnológica/ejecución local.
 - [ ] Estructurar el contenido interno de los programas de estudio en cada una de las páginas individuales de los cursos, con módulos, objetivos y entregables claros.
-- [ ] Reposicionar el toolkit como un "Extractor de Contexto Arquitectónico Seguro" en lugar de un simple alimentador para agentes de IA.
-- [ ] Ajustar la tabla de trade-off para hablar del dolor del CTO (deuda técnica silenciosa, arquitectura limpia y control del código generado por IA) en lugar de enfatizar solo el ahorro de RAM.
+- [x] Reposicionar el toolkit como un "Extractor de Contexto Arquitectónico Seguro" en lugar de un simple alimentador para agentes de IA.
+- [x] Ajustar la tabla de trade-off para hablar del dolor del CTO (deuda técnica silenciosa, arquitectura limpia y control del código generado por IA) en lugar de enfatizar solo el ahorro de RAM.
 
 ## Flujo del formulario (prioridad: alta)
 
@@ -22,14 +22,15 @@ La hoja se centra ahora en las mejoras pendientes más relevantes para la estrat
 ## Accesibilidad y SEO (prioridad: medium)
 
 - [ ] Preparar y publicar una imagen social compartida y revisar el favicon para asegurar vistas previas correctas.
-- [ ] Añadir metadatos consistentes por página: `canonical`, `og:image`, `twitter:image`, `author`, `theme-color` y `JSON-LD` básico.
+- [x] Añadir metadatos consistentes por página: `canonical`, `og:image`, `twitter:image`, `author` y `theme-color` — hecho vía `PAGE_METADATA` en `tools/build.py` e inyectado en `partials/head.html`.
+- [ ] Añadir `JSON-LD` básico (`Organization`/`WebSite`) por página — pendiente, no incluido en la migración de metadatos anterior.
 
 ## Arquitectura y mantenimiento (prioridad: media/baja)
 
-- [ ] Sustituir las comprobaciones frágiles basadas en `grep` por una validación basada en un parser HTML.
-- [ ] Mejorar el checker para validar estructura, enlaces, anclas y ubicación de formularios con mayor robustez frente a cambios de formato HTML.
+- [x] Sustituir las comprobaciones frágiles basadas en `grep` por una validación basada en un parser HTML — hecho: `tools/html_checker.py` valida estructura, formularios, anclas y enlaces; `check.sh` solo conserva existencia de archivos, cobertura en README y placeholders.
+- [x] Mejorar el checker para validar estructura, enlaces, anclas y ubicación de formularios con mayor robustez frente a cambios de formato HTML — cubierto por `RobustHTMLInspector` en `tools/html_checker.py`.
 - [x] Dividir `styles.css` en módulos más pequeños — hecho: `base.css` (variables, reset, tipografía, layout global), `components.css` (botones, formularios, tarjetas, badges, banner, benchmark), `pages.css` (hero, lead-magnet, inscripciones, tradeoff, cta).
-- [ ] Reducir la duplicación de header/footer mediante plantillas, un paso de build o un generador estático ligero.
+- [x] Reducir la duplicación de header/footer mediante plantillas, un paso de build o un generador estático ligero — hecho: `tools/build.py` + `partials/` (`head.html`, `header.html`, `footer.html`), aplicado de forma consistente en las seis plantillas `.html.template`.
 
 ## Lanzamiento y distribución
 
@@ -43,6 +44,6 @@ La hoja se centra ahora en las mejoras pendientes más relevantes para la estrat
 	- Documentar en `README.md` del sitio cómo `ops-core` debe invocar ese `check.sh`.
 	- **Aceptación:** `ops-core` puede invocar el check y recibe un código de salida claro.
 
-- [ ] **FIX** Hacer el enlace de descarga del Toolkit dinámico:
+- [x] **FIX** Hacer el enlace de descarga del Toolkit dinámico:
 	- Reemplazar la URL hardcodeada del asset por una variable o plantilla que apunte al release correcto (o documentar el paso de actualización del link en la checklist de release).
 	- **Aceptación:** El botón de descarga apunta al asset publicado en Releases y no a una ruta stale.

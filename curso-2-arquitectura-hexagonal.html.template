@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+{{HEAD}}
+</head>
+<body>
+    {{HEADER}}
+
+    <main id="main-content">
+        <section class="hero">
+            <h1>Curso 2 · Arquitectura Hexagonal + DDD</h1>
+            <p>Aprende a separar dominio, infraestructura y adaptación para que el cambio no se convierta en un nudo de dependencias invisibles ni en un parche sobre otro parche.</p>
+            <div class="banner"><span aria-hidden="true">🧊</span> Aquí el objetivo no es añadir más capas, sino encontrar límites claros que hagan sostenible el trabajo con IA y con equipos reales.</div>
+        </section>
+
+        <section>
+            <h2>Qué aprenderás</h2>
+            <ul class="feature-list">
+                <li><strong>Dominio puro:</strong> aislar la lógica de negocio para que la IA no la mezcle con detalles de infraestructura.</li>
+                <li><strong>Adaptadores explícitos:</strong> trabajar con interfaces y límites claros para evitar acoplamientos invisibles.</li>
+                <li><strong>Modelado de contexto:</strong> traducir el problema real a un lenguaje estable, auditable y fácil de mantener.</li>
+                <li><strong>Menos capas, menos caos:</strong> entender por qué una arquitectura limpia gana a una pila de parches improvisados.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Para quién va dirigido</h2>
+            <p>Para quienes ya están cansados de montajes pesados y quieren trabajar con un modelo más claro: reproducible, rápido y honesto con el hardware real.</p>
+        </section>
+
+        <section class="cta lead-magnet">
+            <div class="lead-magnet__inner">
+                <h2 class="lead-magnet__title">¿Te interesa este curso?</h2>
+                <p class="lead-magnet__copy">Reserva tu plaza y te avisaremos cuando abran las cohortes de Octubre 2026.</p>
+                <a href="index.html#inscripciones" class="btn">Reservar plaza para Octubre 2026</a>
+            </div>
+        </section>
+    </main>
+
+    {{FOOTER}}
+</body>
+</html>

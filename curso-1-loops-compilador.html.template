@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+{{HEAD}}
+</head>
+<body>
+    {{HEADER}}
+
+    <main id="main-content">
+        <section class="hero">
+            <h1>Curso 1 · Loops cerrados con compilador</h1>
+            <p>Aprende a diseñar flujos de trabajo donde cada cambio se valida de inmediato, el contexto se estabiliza y el código generado por IA no termina desordenando la arquitectura.</p>
+            <div class="banner"><span aria-hidden="true">🧰</span> El objetivo no es acumular más herramientas, sino construir un ciclo de feedback corto, auditable y difícil de romper.</div>
+        </section>
+
+        <section>
+            <h2>Qué aprenderás</h2>
+            <ul class="feature-list">
+                <li><strong>Feedback rápido:</strong> diseñar un flujo donde compilar, revisar y corregir sea más barato que acumular capas.</li>
+                <li><strong>Contexto estable:</strong> preparar el repo y el entorno para que los agentes trabajen con menos ruido y más intención.</li>
+                <li><strong>Seguridad del cambio:</strong> detectar cuándo la IA está rompiendo el sistema antes de que se convierta en deuda.</li>
+                <li><strong>Operación con recursos limitados:</strong> convertir un equipo secundario en un laboratorio útil, estable y con menos overhead.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Para quién va dirigido</h2>
+            <p>Para personas que ya saben programar y quieren un entorno más honesto, más ligero y más eficiente para trabajar desde un equipo secundario sin perder productividad.</p>
+        </section>
+
+        <section class="cta lead-magnet">
+            <div class="lead-magnet__inner">
+                <h2 class="lead-magnet__title">¿Te interesa este curso?</h2>
+                <p class="lead-magnet__copy">Reserva tu plaza y te avisaremos cuando abran las cohortes de Octubre 2026.</p>
+                <a href="index.html#inscripciones" class="btn">Reservar plaza para Octubre 2026</a>
+            </div>
+        </section>
+    </main>
+
+    {{FOOTER}}
+</body>
+</html>

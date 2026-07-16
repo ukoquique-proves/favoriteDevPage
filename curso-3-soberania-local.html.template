@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+{{HEAD}}
+</head>
+<body>
+    {{HEADER}}
+
+    <main id="main-content">
+        <section class="hero">
+            <h1>Curso 3 · Soberanía tecnológica y ejecución local</h1>
+            <p>Diseña pipelines y entornos que funcionen de forma local, reproducible y con suficiente control para que la IA no dependa de un stack opaco ni de una nube que te imponga el ritmo.</p>
+            <div class="banner"><span aria-hidden="true">⚙️</span> No necesitas un stack enorme para automatizar bien. A veces el truco es quitar lo que no aporta nada y conservar lo que realmente importa.</div>
+        </section>
+
+        <section>
+            <h2>Qué aprenderás</h2>
+            <ul class="feature-list">
+                <li><strong>Scripts y automatización:</strong> hacer pipeline con menos ruido y más claridad.</li>
+                <li><strong>Optimización real de rendimiento:</strong> enfocarte en lo que realmente cuesta CPU, tiempo y coordinación.</li>
+                <li><strong>Métricas y observabilidad:</strong> medir antes de inventar más capas o más abstracciones.</li>
+                <li><strong>Trabajo con entornos frugales:</strong> construir flujos que sigan funcionando cuando el hardware o la infraestructura no son generosos.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Para quién va dirigido</h2>
+            <p>Para ingenieros que quieren automatizar con criterio, sin llenar el sistema de dependencias innecesarias ni perder el control del entorno.</p>
+        </section>
+
+        <section class="cta lead-magnet">
+            <div class="lead-magnet__inner">
+                <h2 class="lead-magnet__title">¿Te interesa este curso?</h2>
+                <p class="lead-magnet__copy">Reserva tu plaza y te avisaremos cuando abran las cohortes de Octubre 2026.</p>
+                <a href="index.html#inscripciones" class="btn">Reservar plaza para Octubre 2026</a>
+            </div>
+        </section>
+    </main>
+
+    {{FOOTER}}
+</body>
+</html>

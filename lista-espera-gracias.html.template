@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+{{HEAD}}
+</head>
+<body class="page-centered">
+    {{HEADER}}
+
+    <main id="main-content">
+        <div>
+            <h1>✓ ¡Anotado!</h1>
+            <p>Tu registro en la lista de espera quedó enviado correctamente.</p>
+            <p>Te avisaremos cuando se abran las cohortes de Octubre 2026.</p>
+            <a class="btn" href="index.html#inscripciones">Volver a inscripciones</a>
+        </div>
+    </main>
+
+    {{FOOTER}}
+</body>
+</html>

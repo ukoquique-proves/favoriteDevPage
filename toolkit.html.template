@@ -2,29 +2,13 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toolkit | Extractor de Contexto Arquitectónico Seguro</title>
-    <meta name="description" content="Descarga el extractor de contexto arquitectónico seguro para tus agentes de IA: contexto auditable, reglas claras y ejecución local con menos riesgo de deuda técnica.">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="shortcut icon" href="favicon.svg">
-    <link rel="stylesheet" href="base.css">
-    <link rel="stylesheet" href="components.css">
-    <link rel="stylesheet" href="pages.css">
+{{HEAD}}
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="index.html" class="brand-link"><strong>PuppyTeach</strong> / Engineering</a>
-        </nav>
-        <div class="header-links">
-            <a href="index.html#inscripciones" class="header-link">[ Cursos & Octubre 2026 ]</a>
-            <a href="index.html#tradeoff" class="header-link">[ Trade-off ]</a>
-        </div>
-    </header>
+    {{HEADER}}
 
-    <main>
+    <main id="main-content">
         <section class="hero">
             <span class="eyebrow">TOOLKIT GRATUITO</span>
             <h1>Descarga el extractor de contexto arquitectónico seguro para tus agentes de IA</h1>
@@ -82,7 +66,7 @@ fn main() {
                     <div id="form-wrapper">
                         <p id="lead-form-description" class="lead-form__intro">Introduce tu email para acceder al toolkit:</p>
                         <form id="puppyteach-capture-form" class="lead-form" aria-describedby="lead-form-description" novalidate>
-                            <input type="hidden" name="_subject" value="Descarga Code Compacter - Toolkit PuppyTeach">
+                            <input type="hidden" name="_subject" value="Descarga Extractor de Contexto Arquitectónico Seguro - Toolkit PuppyTeach">
                             <div class="lead-form__field">
                                 <label for="lead-email" class="sr-only">Correo electrónico</label>
                                 <input id="lead-email" type="email" name="email" placeholder="desarrollador@dominio.com"
@@ -91,7 +75,7 @@ fn main() {
                                 <span id="lead-email-help" class="lead-form__help">Usa un correo válido para continuar.</span>
                             </div>
                             <button type="submit" class="btn btn--highlight lead-form__submit">
-                                Enviar Code Compacter de Regalo
+                                Enviar Extractor de Contexto de Regalo
                             </button>
                         </form>
                         <p class="lead-form__note"><span aria-hidden="true">🔒</span> Cero spam corporativo. Solo el script y las lecciones técnicas de PuppyTeach.</p>
@@ -101,9 +85,7 @@ fn main() {
         </section>
     </main>
 
-    <footer>
-        &copy; 2026 PuppyTeach / Teledígitos. Sin humo, solo métricas.
-    </footer>
+    {{FOOTER}}
 
     <script>
         const form = document.getElementById('puppyteach-capture-form');
@@ -132,7 +114,7 @@ fn main() {
                 }
             } catch {
                 btn.disabled = false;
-                btn.textContent = 'Enviar Code Compacter de Regalo';
+                btn.textContent = 'Enviar Extractor de Contexto de Regalo';
                 document.getElementById('form-error').style.display = 'block';
             }
         });

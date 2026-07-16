@@ -20,23 +20,17 @@ if [ -f .env ]; then
     done < .env
 fi
 
-# Check if TOOLKIT_DOWNLOAD_URL is set
-if [ -z "$TOOLKIT_DOWNLOAD_URL" ]; then
-    echo "Error: TOOLKIT_DOWNLOAD_URL environment variable is not set."
-    echo "Please set it in .env file or as an environment variable."
+# Run the python build script to assemble templates and inject partials
+if command -v python3 >/dev/null 2>&1; then
+    echo "Running Python static site generator..."
+    python3 tools/build.py
+    if [ $? -ne 0 ]; then
+        echo "Error: Python build script failed."
+        exit 1
+    fi
+else
+    echo "Error: python3 is required to build the templates."
     exit 1
 fi
-
-# Check if template file exists
-TEMPLATE_FILE="toolkit.html.template"
-OUTPUT_FILE="toolkit.html"
-if [ ! -f "$TEMPLATE_FILE" ]; then
-    echo "Error: Template file $TEMPLATE_FILE not found."
-    exit 1
-fi
-
-# Replace placeholder with actual value and write output
-echo "Building $OUTPUT_FILE with download URL: $TOOLKIT_DOWNLOAD_URL"
-sed -e "s|{{TOOLKIT_DOWNLOAD_URL}}|$TOOLKIT_DOWNLOAD_URL|g" "$TEMPLATE_FILE" > "$OUTPUT_FILE"
 
 echo "Build completed successfully!"

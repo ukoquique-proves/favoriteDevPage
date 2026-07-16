@@ -33,8 +33,12 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - Added `_subject` field to toolkit capture form for clean inbox separation from the waitlist form.
 - Added footer to all three course detail pages.
 - README rewritten to reflect current architecture and document all scripts.
-
+- Replaced fragile grep-based HTML checks in `check.sh` with a robust Python parser (`tools/html_checker.py`) that strictly validates structure and internal link integrity.
+- Replaced hardcoded duplication of `<head>`, `<header>`, and `<footer>` tags across HTML files by creating a lightweight Python static site generator (`tools/build.py`).
+- All `.html` files converted into `.html.template` templates with placeholders, utilizing shared files from the new `partials/` directory.
+- `build.sh` script simplified to just run the Python builder.
 ### Fixed
+- Fixed a broken internal link anchor on `index.html` by renaming `id="benchmark"` to `id="tradeoff"`, which the new Python parser correctly caught.
 - Removed dead CSS classes (`.col-side`, `.docker-col`, `.puppy-col`).
 - Corrected the courses section title from `Catálogo de Cursos (Fase 2)` to `Catálogo de Cursos`.
 - Fixed the secondary CTA hover state so it no longer inherited primary button styling.
