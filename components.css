@@ -142,6 +142,103 @@
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
+.text-link {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--accent-color);
+    cursor: pointer;
+    font: inherit;
+    text-decoration: underline;
+}
+
+.text-link:hover {
+    color: #8ec5ff;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+}
+
+.modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+}
+
+.modal__panel {
+    position: relative;
+    width: min(92vw, 560px);
+    background: #111827;
+    border: 1px solid #374151;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+    z-index: 1;
+}
+
+.modal__close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal__copy {
+    color: #c9d1d9;
+    margin-bottom: 1rem;
+}
+
+.modal__actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.modal__subaction {
+    margin: 0.5rem 0 0;
+}
+
+.collaborator-panel {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.collaborator-feedback {
+    min-height: 1.25rem;
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+.collaborator-feedback--success {
+    color: #7ee787;
+}
+
+.collaborator-feedback--error {
+    color: #ff7b72;
+}
+
+.collaborator-success {
+    margin-top: 1rem;
+    color: #7ee787;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
 /* --- Cards --- */
 
 .courses-grid {

@@ -212,13 +212,13 @@
 
         <section id="lead-magnet" class="cta lead-magnet">
             <div class="lead-magnet__inner">
-                <span class="eyebrow">TOOLKIT GRATUITO</span>
+                <span class="eyebrow">TOOLKIT PARA EQUIPOS</span>
                 <h2 class="lead-magnet__title">Descarga el Extractor de Contexto Arquitectónico Seguro para tus agentes
                     de IA</h2>
                 <p class="lead-magnet-desc">
                     Sin newsletters genéricas, solo código y métricas crudas — para que tengas el control, no la IA.
                 </p>
-                <a href="toolkit.html" class="btn">Obtener toolkit gratis</a>
+                <a href="toolkit.html" class="btn">Descubrir el toolkit</a>
             </div>
         </section>
 

@@ -10,7 +10,7 @@
 
     <main id="main-content">
         <section class="hero">
-            <span class="eyebrow">TOOLKIT GRATUITO</span>
+            <span class="eyebrow">TOOLKIT PARA EQUIPOS</span>
             <h1>Descarga el extractor de contexto arquitectónico seguro para tus agentes de IA</h1>
             <p>Diseñado para equipos que quieren controlar el contexto que entra en los modelos: menos ruido, más estructura y menos riesgo de introducir deuda técnica con cada prompt.</p>
             <p>El archivo generado es un contexto listo para consumir, preparado para ser usado con disciplina: auditable, estable y útil para trabajar sobre un sistema real sin perder el control de la arquitectura.</p>
@@ -30,12 +30,12 @@
             <div class="code-sample">
                 <p class="code-sample-label"># Ejemplo de salida generada por la herramienta:</p>
                 <pre>
-================================================================================
-File: src/main.rs
-================================================================================
-fn main() {
-    println!("Hello from an optimized context!");
-}
+--------------------------------------------------------------------------------
+FILE: src/main.py
+LANGUAGE: python
+--------------------------------------------------------------------------------
+def main():
+    print("Hello from an optimized context!")
                 </pre>
             </div>
         </section>
