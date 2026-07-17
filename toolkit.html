@@ -81,47 +81,49 @@ fn main() {
 
         <section class="cta lead-magnet">
             <div class="lead-magnet__inner">
-                <h2 class="lead-magnet__title">Recibe el toolkit gratis</h2>
+                <h2 class="lead-magnet__title">Solicita el paquete Code_Compacter</h2>
+                <p class="lead-magnet__copy">El paquete se ofrece con dos caminos claros: compra directa o, si eres colaborador de Teledígitos, acceso gratuito tras validar una contraseña.</p>
 
                 <div class="lead-form__card">
-                    <!-- Success state (hidden until form submits) -->
-                    <div id="form-success" style="display:none;" role="status" aria-live="polite">
-                        <p class="lead-form__intro">✓ ¡Listo! Tu kit está preparado.</p>
-                        <a href="https://github.com/ukoquique-proves/favoriteDevPage/releases/download/v0.1.0/ops-core"
-                            class="btn btn--highlight" download>
-                            ⬇ Descargar ops-core
-                        </a>
-                        <p class="lead-form__note" style="margin-top: 1.25rem;">¿Quieres más contenido técnico sin humo?
-                            <a href="index.html#inscripciones" class="expand-link">Apúntate a la cohorte de Octubre 2026 →</a>
-                        </p>
+                    <p class="lead-form__intro">Elige una opción para continuar:</p>
+                    <div class="lead-magnet__actions">
+                        <button type="button" id="request-package-btn" class="btn btn--highlight">
+                            Solicitar paquete
+                        </button>
                     </div>
-
-                    <!-- Error state (hidden until error) -->
-                    <div id="form-error" style="display:none;" role="alert" aria-live="assertive">
-                        <p class="lead-form__intro" style="color: var(--error-color);">✕ Ocurrió un error. Por favor, intenta nuevamente.</p>
-                    </div>
-
-                    <!-- Form (hidden after success) -->
-                    <div id="form-wrapper">
-                        <p id="lead-form-description" class="lead-form__intro">Introduce tu email para acceder al toolkit:</p>
-                        <form id="puppyteach-capture-form" class="lead-form" aria-describedby="lead-form-description" novalidate>
-                            <input type="hidden" name="_subject" value="Descarga Extractor de Contexto Arquitectónico Seguro - Toolkit PuppyTeach">
-                            <div class="lead-form__field">
-                                <label for="lead-email" class="sr-only">Correo electrónico</label>
-                                <input id="lead-email" type="email" name="email" placeholder="desarrollador@dominio.com"
-                                    required class="lead-form__input lead-form__input--full"
-                                    aria-describedby="lead-email-help">
-                                <span id="lead-email-help" class="lead-form__help">Usa un correo válido para continuar.</span>
-                            </div>
-                            <button type="submit" class="btn btn--highlight lead-form__submit">
-                                Enviar Extractor de Contexto de Regalo
-                            </button>
-                        </form>
-                        <p class="lead-form__note"><span aria-hidden="true">🔒</span> Cero spam corporativo. Solo el script y las lecciones técnicas de PuppyTeach.</p>
-                    </div>
+                    <p class="lead-form__note"><span aria-hidden="true">🔒</span> Los colaboradores reciben una vía especial de acceso gratuito.</p>
                 </div>
             </div>
         </section>
+
+        <div id="purchase-modal" class="modal" hidden>
+            <div class="modal__backdrop" data-close-modal></div>
+            <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="purchase-modal-title">
+                <button type="button" class="modal__close" aria-label="Cerrar ventana" data-close-modal>×</button>
+                <h2 id="purchase-modal-title">Code_Compacter</h2>
+                <p class="modal__copy">El paquete está disponible para compra, por un único pago del valor de un café (simpático aporte para nuestra comunidad). Pero si formas parte del equipo de Teledígitos, también puedes recibirlo gratis.</p>
+
+                <div class="modal__actions">
+                    <button type="button" id="buy-button" class="btn btn--highlight">OK — Comprar paquete</button>
+                </div>
+
+                <p class="modal__subaction">
+                    <button type="button" id="free-option-link" class="text-link">¿Eres colaborador de Teledígitos? Recíbelo gratis</button>
+                </p>
+
+                <div id="collaborator-panel" class="collaborator-panel" hidden>
+                    <label for="collaborator-password" class="sr-only">Contraseña de colaborador</label>
+                    <input id="collaborator-password" type="password" class="lead-form__input lead-form__input--full"
+                        placeholder="Contraseña de Teledígitos">
+                    <button type="button" id="validate-password-btn" class="btn btn--secondary">Validar acceso gratuito</button>
+                    <p id="collaborator-feedback" class="collaborator-feedback" role="status" aria-live="polite"></p>
+                </div>
+
+                <div id="free-access-success" class="collaborator-success" hidden>
+                    <p>Acceso gratuito validado. El paquete se enviará al correo de contacto del colaborador.</p>
+                </div>
+            </div>
+        </div>
     </main>
 
         <footer>
@@ -130,34 +132,76 @@ fn main() {
 
 
     <script>
-        const form = document.getElementById('puppyteach-capture-form');
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const btn = form.querySelector('button[type="submit"]');
-            btn.disabled = true;
-            btn.textContent = 'Enviando...';
+        const modal = document.getElementById('purchase-modal');
+        const requestPackageBtn = document.getElementById('request-package-btn');
+        const buyButton = document.getElementById('buy-button');
+        const freeOptionLink = document.getElementById('free-option-link');
+        const collaboratorPanel = document.getElementById('collaborator-panel');
+        const validatePasswordBtn = document.getElementById('validate-password-btn');
+        const collaboratorPasswordInput = document.getElementById('collaborator-password');
+        const collaboratorFeedback = document.getElementById('collaborator-feedback');
+        const freeAccessSuccess = document.getElementById('free-access-success');
+        const validPassword = 'teledigitos-collab-2026';
 
-            try {
-                const data = new FormData(form);
-                const res = await fetch('https://formspree.io/f/mnjyeeod', {
-                    method: 'POST',
-                    body: data,
-                    headers: { 'Accept': 'application/json' }
-                });
+        function openModal() {
+            modal.hidden = false;
+            document.body.classList.add('modal-open');
+        }
 
-                if (res.ok) {
-                    document.getElementById('form-wrapper').style.display = 'none';
-                    document.getElementById('form-error').style.display = 'none';
-                    document.getElementById('form-success').style.display = 'block';
-                } else {
-                    const body = await res.json().catch(() => ({}));
-                    console.error('Formspree error', res.status, body);
-                    throw new Error('server error');
-                }
-            } catch {
-                btn.disabled = false;
-                btn.textContent = 'Enviar Extractor de Contexto de Regalo';
-                document.getElementById('form-error').style.display = 'block';
+        function closeModal() {
+            modal.hidden = true;
+            document.body.classList.remove('modal-open');
+            collaboratorPanel.hidden = true;
+            freeAccessSuccess.hidden = true;
+            collaboratorFeedback.textContent = '';
+            collaboratorFeedback.className = 'collaborator-feedback';
+            collaboratorPasswordInput.value = '';
+        }
+
+        requestPackageBtn?.addEventListener('click', openModal);
+
+        document.querySelectorAll('[data-close-modal]').forEach((element) => {
+            element.addEventListener('click', closeModal);
+        });
+
+        modal?.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !modal.hidden) {
+                closeModal();
+            }
+        });
+
+        buyButton?.addEventListener('click', () => {
+            collaboratorPanel.hidden = true;
+            freeAccessSuccess.hidden = true;
+            collaboratorFeedback.textContent = 'Compra iniciada. Te contactaremos para cerrar el proceso.';
+            collaboratorFeedback.className = 'collaborator-feedback collaborator-feedback--success';
+        });
+
+        freeOptionLink?.addEventListener('click', () => {
+            collaboratorPanel.hidden = false;
+            freeAccessSuccess.hidden = true;
+            collaboratorFeedback.textContent = '';
+            collaboratorFeedback.className = 'collaborator-feedback';
+            collaboratorPasswordInput.focus();
+        });
+
+        validatePasswordBtn?.addEventListener('click', () => {
+            const password = collaboratorPasswordInput.value.trim();
+
+            if (password === validPassword) {
+                collaboratorPanel.hidden = true;
+                freeAccessSuccess.hidden = false;
+                collaboratorFeedback.textContent = 'Acceso gratuito validado.';
+                collaboratorFeedback.className = 'collaborator-feedback collaborator-feedback--success';
+            } else {
+                collaboratorFeedback.textContent = 'Contraseña incorrecta. Solo los colaboradores de Teledígitos pueden recibir el paquete gratis.';
+                collaboratorFeedback.className = 'collaborator-feedback collaborator-feedback--error';
             }
         });
     </script>

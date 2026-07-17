@@ -7,6 +7,14 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 ## [Unreleased]
 
 ### Added
+- `toolkit.html` / `toolkit.html.template`: replaced email-capture form with a purchase modal (`#purchase-modal`) offering two paths — direct purchase ("valor de un café") or password-gated free access for Teledígitos collaborators. Modal includes collaborator password validation, success/error feedback states, and keyboard/Escape dismiss support.
+
+### Changed
+- `index.html`: replaced `[ Trade-off ]` nav link and tradeoff section with `[ Colabora ]` section offering co-creator and project-partner paths, aligned with ASPIRACION.md tone.
+- All pages: `<meta name="author">` corrected from "Quique Uko" to "Héctor Corbellini".
+- `base.css`, `components.css`, `pages.css`: reduced section spacing (margin-bottom `4rem→2.5rem`, section-specific `6rem→3rem` top margins, pilares/servicios/ética padding `3rem→1.5rem`).
+
+### Added
 - `toolkit.html`: dedicated page for Code Compacter with detail copy, feature list, code sample, email capture form, and inline success block with download button.
 - `serve.sh`: launches a local HTTP server and opens the browser automatically from any directory, polling until the server is ready.
 - `check.sh`: pre-push consistency checker. Validates file existence, nav links, shared asset references, form placement, README coverage, placeholder hygiene, footer presence, and internal link/anchor integrity.
