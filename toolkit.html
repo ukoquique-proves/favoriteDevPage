@@ -101,26 +101,42 @@ def main():
             <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="purchase-modal-title">
                 <button type="button" class="modal__close" aria-label="Cerrar ventana" data-close-modal>×</button>
                 <h2 id="purchase-modal-title">Code_Compacter</h2>
-                <p class="modal__copy">El paquete está disponible para compra, por un único pago del valor de un café (simpático aporte para nuestra comunidad). Pero si formas parte del equipo de Teledígitos, también puedes recibirlo gratis.</p>
+                <p class="modal__copy">El paquete está disponible para compra, por un único pago del valor de un café. Si formas parte del equipo de Teledígitos, también puedes recibirlo gratis.</p>
 
-                <div class="modal__actions">
-                    <button type="button" id="buy-button" class="btn btn--highlight">OK — Comprar paquete</button>
+                <!-- Buy path -->
+                <div id="buy-panel">
+                    <label for="buy-email" class="lead-form__intro">Tu correo para coordinar la compra:</label>
+                    <input id="buy-email" type="email" class="lead-form__input lead-form__input--full"
+                        placeholder="tu@dominio.com" autocomplete="email">
+                    <div class="modal__actions">
+                        <button type="button" id="buy-button" class="btn btn--highlight">Comprar paquete</button>
+                    </div>
+                    <p class="modal__subaction">
+                        <button type="button" id="free-option-link" class="text-link">¿Eres colaborador de Teledígitos? Recíbelo gratis</button>
+                    </p>
                 </div>
 
-                <p class="modal__subaction">
-                    <button type="button" id="free-option-link" class="text-link">¿Eres colaborador de Teledígitos? Recíbelo gratis</button>
-                </p>
-
+                <!-- Collaborator path -->
                 <div id="collaborator-panel" class="collaborator-panel" hidden>
-                    <label for="collaborator-password" class="sr-only">Contraseña de colaborador</label>
+                    <label for="collaborator-password" class="lead-form__intro">Contraseña de colaborador:</label>
                     <input id="collaborator-password" type="password" class="lead-form__input lead-form__input--full"
                         placeholder="Contraseña de Teledígitos">
-                    <button type="button" id="validate-password-btn" class="btn btn--secondary">Validar acceso gratuito</button>
+                    <label for="collaborator-email" class="lead-form__intro" style="margin-top:0.75rem;">Tu correo para recibir el paquete:</label>
+                    <input id="collaborator-email" type="email" class="lead-form__input lead-form__input--full"
+                        placeholder="tu@dominio.com" autocomplete="email">
+                    <button type="button" id="validate-password-btn" class="btn btn--secondary">Validar y recibir gratis</button>
                     <p id="collaborator-feedback" class="collaborator-feedback" role="status" aria-live="polite"></p>
+                    <p class="modal__subaction">
+                        <button type="button" id="back-to-buy" class="text-link">← Volver a compra</button>
+                    </p>
                 </div>
 
+                <!-- Success states -->
+                <div id="buy-success" class="collaborator-success" hidden>
+                    <p>Solicitud recibida. Te contactaremos en breve para cerrar el proceso de compra.</p>
+                </div>
                 <div id="free-access-success" class="collaborator-success" hidden>
-                    <p>Acceso gratuito validado. El paquete se enviará al correo de contacto del colaborador.</p>
+                    <p>Acceso validado. Recibirás el paquete en el correo indicado.</p>
                 </div>
             </div>
         </div>
@@ -132,16 +148,23 @@ def main():
 
 
     <script>
+        const FORMSPREE_URL = 'https://formspree.io/f/mnjyeeod';
+        const validPassword = 'teledigitos-collab-2026';
+
         const modal = document.getElementById('purchase-modal');
         const requestPackageBtn = document.getElementById('request-package-btn');
+        const buyPanel = document.getElementById('buy-panel');
+        const buyEmailInput = document.getElementById('buy-email');
         const buyButton = document.getElementById('buy-button');
+        const buySuccess = document.getElementById('buy-success');
         const freeOptionLink = document.getElementById('free-option-link');
+        const backToBuy = document.getElementById('back-to-buy');
         const collaboratorPanel = document.getElementById('collaborator-panel');
-        const validatePasswordBtn = document.getElementById('validate-password-btn');
         const collaboratorPasswordInput = document.getElementById('collaborator-password');
+        const collaboratorEmailInput = document.getElementById('collaborator-email');
+        const validatePasswordBtn = document.getElementById('validate-password-btn');
         const collaboratorFeedback = document.getElementById('collaborator-feedback');
         const freeAccessSuccess = document.getElementById('free-access-success');
-        const validPassword = 'teledigitos-collab-2026';
 
         function openModal() {
             modal.hidden = false;
@@ -151,56 +174,101 @@ def main():
         function closeModal() {
             modal.hidden = true;
             document.body.classList.remove('modal-open');
+            buyPanel.hidden = false;
             collaboratorPanel.hidden = true;
+            buySuccess.hidden = true;
             freeAccessSuccess.hidden = true;
             collaboratorFeedback.textContent = '';
             collaboratorFeedback.className = 'collaborator-feedback';
             collaboratorPasswordInput.value = '';
+            collaboratorEmailInput.value = '';
+            buyEmailInput.value = '';
+        }
+
+        async function submitToFormspree(subject, email) {
+            const data = new FormData();
+            data.append('email', email);
+            data.append('_subject', subject);
+            const res = await fetch(FORMSPREE_URL, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+            if (!res.ok) throw new Error('formspree error ' + res.status);
         }
 
         requestPackageBtn?.addEventListener('click', openModal);
 
-        document.querySelectorAll('[data-close-modal]').forEach((element) => {
-            element.addEventListener('click', closeModal);
+        document.querySelectorAll('[data-close-modal]').forEach((el) => {
+            el.addEventListener('click', closeModal);
         });
 
-        modal?.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                closeModal();
+        modal?.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.hidden) closeModal();
+        });
+
+        buyButton?.addEventListener('click', async () => {
+            const email = buyEmailInput.value.trim();
+            if (!email || !buyEmailInput.validity.valid) {
+                buyEmailInput.focus();
+                return;
             }
-        });
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && !modal.hidden) {
-                closeModal();
+            buyButton.disabled = true;
+            buyButton.textContent = 'Enviando...';
+            try {
+                await submitToFormspree('Code_Compacter — Solicitud de compra', email);
+                buyPanel.hidden = true;
+                buySuccess.hidden = false;
+            } catch {
+                buyButton.disabled = false;
+                buyButton.textContent = 'Comprar paquete';
+                collaboratorFeedback.textContent = 'Error al enviar. Intenta de nuevo.';
+                collaboratorFeedback.className = 'collaborator-feedback collaborator-feedback--error';
             }
-        });
-
-        buyButton?.addEventListener('click', () => {
-            collaboratorPanel.hidden = true;
-            freeAccessSuccess.hidden = true;
-            collaboratorFeedback.textContent = 'Compra iniciada. Te contactaremos para cerrar el proceso.';
-            collaboratorFeedback.className = 'collaborator-feedback collaborator-feedback--success';
         });
 
         freeOptionLink?.addEventListener('click', () => {
+            buyPanel.hidden = true;
             collaboratorPanel.hidden = false;
-            freeAccessSuccess.hidden = true;
-            collaboratorFeedback.textContent = '';
-            collaboratorFeedback.className = 'collaborator-feedback';
             collaboratorPasswordInput.focus();
         });
 
-        validatePasswordBtn?.addEventListener('click', () => {
-            const password = collaboratorPasswordInput.value.trim();
+        backToBuy?.addEventListener('click', () => {
+            collaboratorPanel.hidden = true;
+            buyPanel.hidden = false;
+            collaboratorFeedback.textContent = '';
+        });
 
-            if (password === validPassword) {
+        validatePasswordBtn?.addEventListener('click', async () => {
+            const password = collaboratorPasswordInput.value.trim();
+            const email = collaboratorEmailInput.value.trim();
+
+            if (password !== validPassword) {
+                collaboratorFeedback.textContent = 'Contraseña incorrecta.';
+                collaboratorFeedback.className = 'collaborator-feedback collaborator-feedback--error';
+                return;
+            }
+            if (!email || !collaboratorEmailInput.validity.valid) {
+                collaboratorEmailInput.focus();
+                collaboratorFeedback.textContent = 'Introduce un correo válido para recibir el paquete.';
+                collaboratorFeedback.className = 'collaborator-feedback collaborator-feedback--error';
+                return;
+            }
+
+            validatePasswordBtn.disabled = true;
+            validatePasswordBtn.textContent = 'Enviando...';
+            try {
+                await submitToFormspree('Code_Compacter — Acceso colaborador (gratuito)', email);
                 collaboratorPanel.hidden = true;
                 freeAccessSuccess.hidden = false;
-                collaboratorFeedback.textContent = 'Acceso gratuito validado.';
-                collaboratorFeedback.className = 'collaborator-feedback collaborator-feedback--success';
-            } else {
-                collaboratorFeedback.textContent = 'Contraseña incorrecta. Solo los colaboradores de Teledígitos pueden recibir el paquete gratis.';
+            } catch {
+                validatePasswordBtn.disabled = false;
+                validatePasswordBtn.textContent = 'Validar y recibir gratis';
+                collaboratorFeedback.textContent = 'Error al enviar. Intenta de nuevo.';
                 collaboratorFeedback.className = 'collaborator-feedback collaborator-feedback--error';
             }
         });
