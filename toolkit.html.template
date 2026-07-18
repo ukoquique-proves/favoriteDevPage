@@ -85,7 +85,7 @@ def main():
                     <label for="collaborator-email" class="lead-form__intro" style="margin-top:0.75rem;">Tu correo para recibir el paquete:</label>
                     <input id="collaborator-email" type="email" class="lead-form__input lead-form__input--full"
                         placeholder="tu@dominio.com" autocomplete="email">
-                    <button type="button" id="validate-password-btn" class="btn btn--secondary">Validar y recibir gratis</button>
+                    <button type="button" id="validate-password-btn" class="btn btn--secondary">Enviar solicitud</button>
                     <p id="collaborator-feedback" class="collaborator-feedback" role="status" aria-live="polite"></p>
                     <p class="modal__subaction">
                         <button type="button" id="back-to-buy" class="text-link">← Volver a compra</button>
@@ -238,7 +238,7 @@ def main():
                 freeAccessSuccess.hidden = false;
             } catch {
                 validatePasswordBtn.disabled = false;
-                validatePasswordBtn.textContent = 'Validar y recibir gratis';
+                validatePasswordBtn.textContent = 'Enviar solicitud';
                 collaboratorFeedback.textContent = 'Error al enviar. Intenta de nuevo.';
                 collaboratorFeedback.className = 'collaborator-feedback collaborator-feedback--error';
             }
