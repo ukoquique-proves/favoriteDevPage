@@ -136,7 +136,7 @@ def main():
                     <p>Solicitud recibida. Te contactaremos en breve para cerrar el proceso de compra.</p>
                 </div>
                 <div id="free-access-success" class="collaborator-success" hidden>
-                    <p>Acceso validado. Recibirás el paquete en el correo indicado.</p>
+                    <p>Solicitud recibida. Verificaremos tu condición de colaborador y te enviaremos el paquete al correo indicado.</p>
                 </div>
             </div>
         </div>
@@ -149,7 +149,6 @@ def main():
 
     <script>
         const FORMSPREE_URL = 'https://formspree.io/f/mnjyeeod';
-        const validPassword = 'teledigitos-collab-2026';
 
         const modal = document.getElementById('purchase-modal');
         const requestPackageBtn = document.getElementById('request-package-btn');
@@ -189,6 +188,19 @@ def main():
             const data = new FormData();
             data.append('email', email);
             data.append('_subject', subject);
+            const res = await fetch(FORMSPREE_URL, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+            if (!res.ok) throw new Error('formspree error ' + res.status);
+        }
+
+        async function submitToFormspreeCollaborator(email, password) {
+            const data = new FormData();
+            data.append('email', email);
+            data.append('password_entered', password);
+            data.append('_subject', 'Code_Compacter — Solicitud colaborador (verificar contraseña)');
             const res = await fetch(FORMSPREE_URL, {
                 method: 'POST',
                 body: data,
@@ -247,8 +259,9 @@ def main():
             const password = collaboratorPasswordInput.value.trim();
             const email = collaboratorEmailInput.value.trim();
 
-            if (password !== validPassword) {
-                collaboratorFeedback.textContent = 'Contraseña incorrecta.';
+            if (!password) {
+                collaboratorPasswordInput.focus();
+                collaboratorFeedback.textContent = 'Introduce la contraseña de colaborador.';
                 collaboratorFeedback.className = 'collaborator-feedback collaborator-feedback--error';
                 return;
             }
@@ -262,7 +275,7 @@ def main():
             validatePasswordBtn.disabled = true;
             validatePasswordBtn.textContent = 'Enviando...';
             try {
-                await submitToFormspree('Code_Compacter — Acceso colaborador (gratuito)', email);
+                await submitToFormspreeCollaborator(email, password);
                 collaboratorPanel.hidden = true;
                 freeAccessSuccess.hidden = false;
             } catch {
