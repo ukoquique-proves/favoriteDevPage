@@ -17,6 +17,20 @@ The delivery is manual, not automatic: once Formspree receives the submission, t
 
 Most likely cause: the fetch returned a non-ok HTTP status. Open DevTools (F12 → Console) and submit the form. Look for a `Formspree error` log with the status code.
 
+### Symptom: modal open/close behavior regresses
+
+If the toolkit modal stops hiding correctly after clicking close, backdrop, Escape, or the collaborator back button, run the real-browser smoke test:
+
+```bash
+pip install playwright --break-system-packages
+playwright install chromium
+python3 tools/test_toolkit_modal.py
+```
+
+The test exercises the exact flows that previously broke when `[hidden]` was overridden by `display: flex` on the modal or collaborator panel.
+
+This check is intentionally optional because Playwright downloads a Chromium binary that is relatively heavy for a static landing page repository. When the browser runtime is not available locally, the script degrades gracefully and only prints a warning instead of failing the whole push workflow. In a CI environment with a reproducible setup, it is reasonable to make this step mandatory.
+
 - **403**: Formspree is blocking the domain. Check the Formspree dashboard for form `mnjyeeod`.
 - **422**: Form validation error — likely a missing required field.
 - **Network error / CORS**: The fetch was blocked before reaching Formspree. Check browser console for CORS errors.

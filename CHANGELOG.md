@@ -9,6 +9,7 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 ### Fixed
 - `toolkit.html` / `toolkit.html.template`: modal buy and collaborator paths were UI-only mockups with no actual delivery. Both paths now capture email and submit to Formspree (`mnjyeeod`) with distinct subjects (`Code_Compacter — Solicitud de compra` / `Code_Compacter — Acceso colaborador (gratuito)`) so requests reach the operator for manual fulfillment. Includes loading state, error handling, and clean reset on close.
 - `toolkit.html.template`: code sample switched from Rust (`src/main.rs`) to Python (`src/main.py`) to match the "escrito en Python nativo" claim in the features list.
+- Added a Playwright browser smoke test at `tools/test_toolkit_modal.py` to guard the real modal behavior against regressions like `[hidden]` being overridden by `display: flex`.
 
 ### Changed
 - Nav link `[ Toolkit_Gratis ]` → `[ Toolkit ]` across all pages (header partial and all templates).

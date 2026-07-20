@@ -111,7 +111,26 @@ Para correr las comprobaciones sin hacer push:
 ./check.sh
 ```
 
-Valida existencia de archivos, nav links, assets compartidos, placement de formularios, cobertura en README, placeholders sin completar e integridad de links internos.
+Valida existencia de archivos, nav links, assets compartidos, placement de formularios, cobertura en README, placeholders sin completar e integridad de links internos. Además, si Playwright está instalado, ejecuta un smoke test real del modal del toolkit en un navegador Chromium para comprobar los flujos de abrir/cerrar, ir a colaborador, volver a compra y cerrar con backdrop/Escape.
+
+El chequeo de Playwright es opcional por diseño: instala un binario de Chromium de tamaño considerable y no siempre está presente en máquinas locales de desarrollo. Por eso `check.sh` lo omite con un aviso si no está disponible, en vez de convertirlo en un requisito obligatorio para `push.sh` o para todos los desarrolladores. En CI reproducible (por ejemplo GitHub Actions) tiene sentido hacerlo obligatorio porque el entorno se crea desde cero y se puede instalar de forma determinista.
+
+### Smoke test del modal del toolkit
+
+Requisitos:
+
+```bash
+pip install playwright --break-system-packages
+playwright install chromium
+```
+
+Ejecución:
+
+```bash
+python3 tools/test_toolkit_modal.py
+```
+
+Por defecto apunta a `toolkit.html` en la raíz del repositorio mediante `file://`, así que no requiere tener el servidor levantado; también acepta una URL si querés probarlo sobre `http://127.0.0.1:8080/toolkit.html`.
 
 ## Mantenimiento
 

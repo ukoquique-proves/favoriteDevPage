@@ -96,6 +96,21 @@ if command -v python3 >/dev/null 2>&1; then
 else
   echo "python3 not found. Skipping robust HTML checks."
 fi
+
+echo
+echo "=== Comportamiento del modal (navegador real, opcional) ==="
+if command -v python3 >/dev/null 2>&1; then
+  if python3 -c "import playwright" >/dev/null 2>&1; then
+    if ! python3 tools/test_toolkit_modal.py; then
+      ERRORS=$((ERRORS + 1))
+    fi
+  else
+    echo "Playwright no está instalado — se omite este chequeo."
+    echo "Instalar con: pip install playwright --break-system-packages && playwright install chromium"
+  fi
+else
+  echo "python3 not found. Skipping browser modal checks."
+fi
 echo ""
 if [ "$ERRORS" -eq 0 ]; then
     echo "✓ All checks passed."
