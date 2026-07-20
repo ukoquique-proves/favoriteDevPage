@@ -3,6 +3,7 @@
 Simple static site generator for Teledígitos landing page.
 Injects partials (head, header, footer), environment variables, and per-page metadata.
 """
+import argparse
 import os
 import sys
 from pathlib import Path
@@ -48,8 +49,15 @@ DEFAULT_METADATA = {
 }
 
 def main():
+    parser = argparse.ArgumentParser(description='Build the static site from templates.')
+    parser.add_argument('--output-dir', help='Directory to write generated .html files to (defaults to the repository root).')
+    args = parser.parse_args()
+
     root_dir = Path(__file__).parent.parent
+    output_root = Path(args.output_dir).resolve() if args.output_dir else root_dir
+    output_root.mkdir(parents=True, exist_ok=True)
     partials_dir = root_dir / 'partials'
+    toolkit_url = os.environ.get("TOOLKIT_DOWNLOAD_URL", "")
     
     # Load partials
     try:
@@ -60,8 +68,6 @@ def main():
         print(f"Error loading partials: {e}")
         sys.exit(1)
         
-    toolkit_url = os.environ.get("TOOLKIT_DOWNLOAD_URL", "")
-    
     # Process all .html.template files
     template_files = list(root_dir.glob('*.html.template'))
     
@@ -84,7 +90,7 @@ def main():
         content = content.replace("{{HEAD}}", current_head)
         content = content.replace("{{HEADER}}", header_partial)
         content = content.replace("{{FOOTER}}", footer_partial)
-        
+
         # Inject variables
         if "{{TOOLKIT_DOWNLOAD_URL}}" in content:
             if not toolkit_url:
@@ -94,10 +100,10 @@ def main():
             
         # Write to output file (remove .template extension)
         output_name = template_path.name[:-9] # remove '.template'
-        output_path = root_dir / output_name
+        output_path = output_root / output_name
         
         output_path.write_text(content, encoding='utf-8')
-        print(f"Built {output_name} from {template_path.name}")
+        print(f"Built {output_name} from {template_path.name} -> {output_path}")
 
 if __name__ == '__main__':
     main()

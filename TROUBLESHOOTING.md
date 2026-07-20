@@ -4,18 +4,14 @@
 
 ### Current flow (as implemented)
 
-The toolkit form uses a `fetch()`-based AJAX submission. There is no page redirect, no Formspree SDK, and no `gracias.html`.
+The toolkit uses a modal-driven flow in `toolkit.html` with two paths:
 
-1. User enters email on `toolkit.html` and clicks submit
-2. JS intercepts the submit, calls `fetch('https://formspree.io/f/mnjyeeod', ...)` with `Accept: application/json`
-3. On success (`res.ok`): form hides, `#form-success` div appears with the download button and a link to the waitlist
-4. On failure: form re-enables, `#form-error` div appears
-5. Formspree notifies the form owner at the registered account email
+1. Buy path: user enters their email and the page submits a Formspree request for manual fulfillment.
+2. Collaborator path: user enters the collaborator password, their email, and the page submits a separate Formspree request for manual verification.
 
-The download button links directly to:
-```
-https://github.com/ukoquique-proves/favoriteDevPage/releases/download/v0.1.0/ops-core
-```
+Both flows use `fetch()` with Formspree (`https://formspree.io/f/mnjyeeod`) and no page redirect. The collaborator path now exposes a direct download button immediately after the password is validated, while the buy path remains manual and only shows the internal success state.
+
+The delivery is manual, not automatic: once Formspree receives the submission, the operator may still fulfill the request outside the page, but the collaborator path no longer blocks the delivery on that network step.
 
 ### Symptom: success block not appearing after submit
 
@@ -25,23 +21,9 @@ Most likely cause: the fetch returned a non-ok HTTP status. Open DevTools (F12 �
 - **422**: Form validation error — likely a missing required field.
 - **Network error / CORS**: The fetch was blocked before reaching Formspree. Check browser console for CORS errors.
 
-### Symptom: download button returns 404
+### Symptom: manual fulfillment is not happening
 
-The GitHub release asset does not exist. Go to:
-`github.com/ukoquique-proves/favoriteDevPage → Releases`
-and verify that release `v0.1.0` exists and contains the `ops-core` asset.
-
-### Release artifact prepared for upload
-
-The packaged release artifact has already been generated and is available at:
-
-- `/tmp/ops-core-release/ops-core-linux-x86_64.tar.gz`
-
-This archive is the file intended to be uploaded as the GitHub release asset for the `ops-core` download link.
-
-### Note on earlier download failures
-
-If the toolkit download appeared to fail before, the issue was not necessarily a broken GitHub release asset. In practice, the problem was usually a mismatch between the URL being used by the landing page and the actual release asset that had been published. When the correct release page was opened directly in GitHub and the asset was downloaded from there, the download worked normally. In other words, the failure mode was usually a stale or incorrect link target rather than a permanent GitHub storage problem.
+If the request reaches Formspree but no operator action follows, check the Formspree inbox and the configured notification settings for form `mnjyeeod`. The page itself does not trigger a download or any local asset delivery.
 
 ### Symptom: form owner not receiving notification emails
 

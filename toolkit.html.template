@@ -97,7 +97,10 @@ def main():
                     <p>Solicitud recibida. Te contactaremos en breve para cerrar el proceso de compra.</p>
                 </div>
                 <div id="free-access-success" class="collaborator-success" hidden>
-                    <p>Solicitud recibida. Verificaremos tu condición de colaborador y te enviaremos el paquete al correo indicado.</p>
+                    <p>✓ Contraseña verificada. Aquí tienes tu paquete:</p>
+                    <a href="{{TOOLKIT_DOWNLOAD_URL}}" class="btn btn--highlight" download>
+                        ⬇ Descargar Code_Compacter
+                    </a>
                 </div>
             </div>
         </div>
@@ -122,6 +125,13 @@ def main():
         const validatePasswordBtn = document.getElementById('validate-password-btn');
         const collaboratorFeedback = document.getElementById('collaborator-feedback');
         const freeAccessSuccess = document.getElementById('free-access-success');
+        const COLLABORATOR_PASSWORD_HASH = '6599db065ded5b87bac9c81fb2f7c4acceaf97846d6471c6a5a4a5327eaf2658';
+
+        async function hashPassword(value) {
+            const bytes = new TextEncoder().encode(value);
+            const digest = await crypto.subtle.digest('SHA-256', bytes);
+            return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
+        }
 
         function openModal() {
             modal.hidden = false;
@@ -140,6 +150,10 @@ def main():
             collaboratorPasswordInput.value = '';
             collaboratorEmailInput.value = '';
             buyEmailInput.value = '';
+            buyButton.disabled = false;
+            buyButton.textContent = 'Comprar paquete';
+            validatePasswordBtn.disabled = false;
+            validatePasswordBtn.textContent = 'Enviar solicitud';
         }
 
         async function submitToFormspree(subject, email) {
@@ -154,10 +168,10 @@ def main():
             if (!res.ok) throw new Error('formspree error ' + res.status);
         }
 
-        async function submitToFormspreeCollaborator(email, password) {
+        async function submitToFormspreeCollaborator(email, passwordHash) {
             const data = new FormData();
             data.append('email', email);
-            data.append('password_entered', password);
+            data.append('password_entered', passwordHash);
             data.append('_subject', 'Code_Compacter — Solicitud colaborador (verificar contraseña)');
             const res = await fetch(FORMSPREE_URL, {
                 method: 'POST',
@@ -169,8 +183,12 @@ def main():
 
         requestPackageBtn?.addEventListener('click', openModal);
 
-        document.querySelectorAll('[data-close-modal]').forEach((el) => {
-            el.addEventListener('click', closeModal);
+        const closeControls = document.querySelectorAll('[data-close-modal]');
+        closeControls.forEach((el) => {
+            el.addEventListener('click', (event) => {
+                event.stopPropagation();
+                closeModal();
+            });
         });
 
         modal?.addEventListener('click', (e) => {
@@ -231,17 +249,25 @@ def main():
             }
 
             validatePasswordBtn.disabled = true;
-            validatePasswordBtn.textContent = 'Enviando...';
-            try {
-                await submitToFormspreeCollaborator(email, password);
-                collaboratorPanel.hidden = true;
-                freeAccessSuccess.hidden = false;
-            } catch {
+            validatePasswordBtn.textContent = 'Verificando...';
+
+            const passwordHash = await hashPassword(password);
+            const isValidPassword = passwordHash === COLLABORATOR_PASSWORD_HASH;
+
+            if (!isValidPassword) {
                 validatePasswordBtn.disabled = false;
                 validatePasswordBtn.textContent = 'Enviar solicitud';
-                collaboratorFeedback.textContent = 'Error al enviar. Intenta de nuevo.';
+                collaboratorFeedback.textContent = 'La contraseña de colaborador no coincide.';
                 collaboratorFeedback.className = 'collaborator-feedback collaborator-feedback--error';
+                return;
             }
+
+            collaboratorPanel.hidden = true;
+            freeAccessSuccess.hidden = false;
+
+            submitToFormspreeCollaborator(email, passwordHash).catch((err) => {
+                console.error('No se pudo registrar la solicitud en Formspree:', err);
+            });
         });
     </script>
 </body>

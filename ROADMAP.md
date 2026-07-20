@@ -14,10 +14,11 @@ La hoja se centra ahora en las mejoras pendientes más relevantes para la estrat
 
 ## Flujo del formulario (prioridad: alta)
 
-- [x] **Whitelistear dominio en Formspree**: en formspree.io → form `mnjyeeod` → Settings → añadir `ukoquique-proves.github.io` a los dominios permitidos. Sin esto el `fetch()` en `toolkit.html` recibirá un 403 y el bloque `#form-success` no aparecerá.
-- [x] **Subir release `v0.1.0` en `favoriteDevPage`**: release creado en github.com/ukoquique-proves/favoriteDevPage → tag `v0.1.0` con el asset `ops-core`.
+- [x] **Whitelistear dominio en Formspree**: en formspree.io → form `mnjyeeod` → Settings → añadir `ukoquique-proves.github.io` a los dominios permitidos. Sin esto el `fetch()` en `toolkit.html` recibirá un 403 y no se completará el envío.
 - [ ] Ejecutar una prueba de extremo a extremo contra el sitio publicado y verificar que Formspree recibe las entradas y que el flujo de éxito llega a la página correcta.
 - [ ] Revisar y estandarizar los CTA del sitio para que describan con precisión su destino y su valor de negocio.
+- [ ] **Detalle de seguridad a tener presente (no bloqueante, pero avisemos):** el hash SHA-256 sin sal sigue expuesto en el JS público, así que alguien con conocimientos técnicos podría, en teoría, extraer la contraseña real por fuerza bruta offline sin pasar por el formulario. Como ya se documenta en el `README.md`, esto es aceptable si la contraseña solo es una barrera liviana para colaboradores de confianza y no un control de acceso real; pero si el paquete tiene valor comercial, vale la pena saberlo explícitamente: alguien que rompa el hash localmente obtiene el link/paquete sin que quede ningún registro en Formspree, porque la descarga ya no depende de esa llamada.
+  - A futuro, la única forma robusta de cerrarlo sería mover la verificación de contraseña a un backend o una función serverless que sea quien entregue el link, pero eso ya no es "landing estática sin backend" y probablemente no valga la pena para el caso de uso actual.
 
 ## Accesibilidad y SEO (prioridad: medium)
 
@@ -44,6 +45,6 @@ La hoja se centra ahora en las mejoras pendientes más relevantes para la estrat
 	- Documentar en `README.md` del sitio cómo `ops-core` debe invocar ese `check.sh`.
 	- **Aceptación:** `ops-core` puede invocar el check y recibe un código de salida claro.
 
-- [x] **FIX** Hacer el enlace de descarga del Toolkit dinámico:
-	- Reemplazar la URL hardcodeada del asset por una variable o plantilla que apunte al release correcto (o documentar el paso de actualización del link en la checklist de release).
-	- **Aceptación:** El botón de descarga apunta al asset publicado en Releases y no a una ruta stale.
+- [ ] **FIX** Revisar la entrega manual del toolkit:
+	- Si se vuelve a introducir un botón o enlace de descarga directa, debe gestionarse de forma explícita en el build o en una variable de entorno.
+	- **Aceptación:** El flujo actual de compra/acceso queda documentado, y cualquier futura descarga directa debe ser declarada explícitamente en la documentación y no quedar implícita en el HTML.

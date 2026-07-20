@@ -3,19 +3,34 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$DIR"
 
 # Load environment variables from .env file if it exists, but don't override existing ones
+trim_value() {
+    local value="$1"
+    value="${value#"${value%%[![:space:]]*}"}"
+    value="${value%"${value##*[![:space:]]}"}"
+    printf '%s' "$value"
+}
+
 if [ -f .env ]; then
     echo "Loading environment variables from .env (without overriding existing ones)..."
-    while IFS= read -r line; do
+    while IFS= read -r line || [ -n "$line" ]; do
+        line="${line%$'\r'}"
         # Skip comments and empty lines
-        if [[ "$line" =~ ^#.*$ ]] || [[ -z "$line" ]]; then
+        if [[ "$line" =~ ^[[:space:]]*(#.*)?$ ]]; then
             continue
         fi
-        # Split into key and value
-        key=$(echo "$line" | cut -d= -f1)
-        value=$(echo "$line" | cut -d= -f2-)
-        # Only set if not already set
-        if [[ -z "${!key}" ]]; then
-            export "$key"="$value"
+        # Parse KEY=VALUE while tolerating spaces around the separator and surrounding quotes
+        if [[ "$line" =~ ^[[:space:]]*([A-Za-z_][A-Za-z0-9_]*)[[:space:]]*=(.*)$ ]]; then
+            key="${BASH_REMATCH[1]}"
+            value="$(trim_value "${BASH_REMATCH[2]}")"
+            if [[ "$value" =~ ^\"(.*)\"$ ]]; then
+                value="${BASH_REMATCH[1]}"
+            elif [[ "$value" =~ ^\'(.*)\'$ ]]; then
+                value="${BASH_REMATCH[1]}"
+            fi
+            # Only set if not already set
+            if [[ -z "${!key-}" ]]; then
+                export "$key=$value"
+            fi
         fi
     done < .env
 fi

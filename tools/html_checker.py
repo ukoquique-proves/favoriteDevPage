@@ -93,17 +93,23 @@ def check_files(root: Path):
                  failures.append(f"[{fname}] Missing nav link back to index.html")
                      
         # Form placement based on IDs
-        has_capture = "puppyteach-capture-form" in parser.ids
+        has_purchase_modal = "purchase-modal" in parser.ids
+        has_buy_panel = "buy-panel" in parser.ids
+        has_collaborator_panel = "collaborator-panel" in parser.ids
         has_waitlist = "puppyteach-waitlist-form" in parser.ids
         
         if fname == "toolkit.html":
-            if not has_capture: failures.append(f"[{fname}] Missing puppyteach-capture-form")
+            if not has_purchase_modal: failures.append(f"[{fname}] Missing purchase-modal")
+            if not has_buy_panel: failures.append(f"[{fname}] Missing buy-panel")
+            if not has_collaborator_panel: failures.append(f"[{fname}] Missing collaborator-panel")
             if has_waitlist: failures.append(f"[{fname}] Contains puppyteach-waitlist-form (should only be in index.html)")
         elif fname == "index.html":
             if not has_waitlist: failures.append(f"[{fname}] Missing puppyteach-waitlist-form")
-            if has_capture: failures.append(f"[{fname}] Contains puppyteach-capture-form (should only be in toolkit.html)")
+            if has_purchase_modal or has_buy_panel or has_collaborator_panel:
+                failures.append(f"[{fname}] Contains toolkit modal IDs (should only be in toolkit.html)")
         else:
-            if has_capture: failures.append(f"[{fname}] Contains puppyteach-capture-form")
+            if has_purchase_modal or has_buy_panel or has_collaborator_panel:
+                failures.append(f"[{fname}] Contains toolkit modal IDs")
             if has_waitlist: failures.append(f"[{fname}] Contains puppyteach-waitlist-form")
 
     # Pass 3: Link Integrity
